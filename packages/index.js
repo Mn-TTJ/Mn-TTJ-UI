@@ -1,5 +1,4 @@
-import Button from "./components/button/Button"
-import Input from './components/input/Input'
+import Button from "./components/base/button/Button"
 const components = [
     Button, Input
 ]
