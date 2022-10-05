@@ -1,0 +1,12 @@
+* {
+    margin: 0rem;
+    padding: 0rem;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'iconfont';
+    src: url('../icon/iconfont.ttf') format('woff2'),
+        url('../icon//iconfont.woff') format('woff'),
+        url('../icon/iconfont.woff2') format('truetype');
+}
