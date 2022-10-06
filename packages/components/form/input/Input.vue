@@ -6,9 +6,9 @@
                 <slot name="pre"></slot>
             </span>
             <div class="input-box" :class="{'clearable':clearable}" @click="clearInput">
-                <input :class="{'lessInput':lessInput,'pre-border':pre,'behind-border':behind}" :style="ustyle"
-                    v-model="mValue" :disabled="disabled" :placeholder="parser" :maxlength="max"
-                    :type="password?'password':'text'" />
+                <input :class="{'lessInput':lessInput,'pre-border':pre,'behind-border':behind,'disabled':disabled}"
+                    :style="ustyle" v-model="mValue" :disabled="disabled" :placeholder="parser" :maxlength="max"
+                    :type="password?'password':'text'" @focus="$emit('focus')" @blur="$emit('blur')" ref="input" />
             </div>
             <span class="behind-span" v-if="behind">
                 <slot name="behind"></slot>
@@ -28,7 +28,7 @@ export default {
 <script setup>
 // eslint-disable-next-line
 const props = defineProps(useProps());
-const emits = defineEmits(['update:modelValue'])
+const emits = defineEmits(['update:modelValue', 'focus', 'blur'])
 const mValue = computed({
     get: () => props.modelValue,
     set: (val) => emits('update:modelValue', val)
@@ -74,6 +74,7 @@ input {
     width: 100%;
     outline: none;
     caret-color: #409eff;
+    background-color: white;
 }
 
 input:focus {

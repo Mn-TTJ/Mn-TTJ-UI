@@ -1,14 +1,8 @@
 <template>
   <div class="hello">
     <div class="con">
-      <ui-input parser="hello" v-model="dd" pre clearable>
-        <template #pre>
-          <div class="pre">hello</div>
-        </template>
-        <template #behind>
-          <div class="behind">world</div>
-        </template>
-      </ui-input>
+      <ui-autocompelete v-model="dd" :tips=tips panel>
+      </ui-autocompelete>
     </div>
   </div>
 </template>
@@ -18,7 +12,13 @@ export default {
   name: 'HelloWorld',
   data() {
     return {
-      dd: 666
+      dd: 666,
+      tips: []
+    }
+  },
+  watch: {
+    dd() {
+      this.tips.push(this.dd)
     }
   }
 }

@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+.disabled {
+    cursor: not-allowed;
+}
+
 @font-face {
     font-family: 'iconfont';
     src: url('../icon/iconfont.ttf') format('woff2'),
