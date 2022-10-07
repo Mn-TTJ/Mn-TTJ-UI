@@ -1,9 +1,9 @@
 <template>
     <div class="textarea-base">
-        <p v-if="min" :class="{'input-p-hidden':!lessInput}">*输入字符不足{{min}}个*</p>
         <div class="text-input" :class="{'disabled':disabled,'resizable':resizable,'lessInput':lessInput}"
             :contenteditable="!disabled" @input="inputEvent" ref="tArea" :placeholder="parser" :style="ustyle"></div>
         <textarea class="hidden-input" v-model="mValue"></textarea>
+        <p v-if="min" :class="{'input-p-hidden':!lessInput}">*输入字符不足{{min}}个*</p>
     </div>
 </template>
 
@@ -108,8 +108,8 @@ watch(mValue, () => {
 }
 
 p {
-    padding: 0.1rem 0rem;
-    font-size: 0.8rem;
+    position: absolute;
+    font-size: 0.75rem;
     color: red;
     text-align: left;
     transition-duration: 0.3s;

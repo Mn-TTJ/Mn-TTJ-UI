@@ -1,6 +1,5 @@
 <template>
     <div class="input-base">
-        <p v-if="min" :class="{'input-p-hidden':!lessInput}">*输入字符不足{{min}}个*</p>
         <div class="input-container">
             <span class="pre-span" v-if="pre">
                 <slot name="pre"></slot>
@@ -14,6 +13,7 @@
                 <slot name="behind"></slot>
             </span>
         </div>
+        <p v-if="min" :class="{'input-p-hidden':!lessInput}">*输入字符不足{{min}}个*</p>
     </div>
 </template>
     
@@ -93,8 +93,8 @@ input:focus {
 }
 
 p {
-    padding: 0.1rem 0rem;
-    font-size: 0.8rem;
+    position: absolute;
+    font-size: 0.75rem;
     color: red;
     text-align: left;
     transition-duration: 0.3s;
