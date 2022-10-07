@@ -1,7 +1,14 @@
 <template>
   <div class="hello">
     <div class="con">
-      <ui-datepicker v-model="dd"></ui-datepicker>
+      <ui-switch v-model="dd" sm></ui-switch>
+      <ui-switch v-model="dd"></ui-switch>
+      <ui-switch v-model="dd" lg></ui-switch>
+      <ui-switch v-model="dd" custom>
+        <template #switch>
+          hello
+        </template>
+      </ui-switch>
     </div>
   </div>
 </template>
@@ -11,7 +18,8 @@ export default {
   name: 'HelloWorld',
   data() {
     return {
-      dd: '2022-11-24'
+      dd: true,
+      labels: ['hello', 'world', 'yes?']
     }
   },
   watch: {
@@ -28,5 +36,9 @@ export default {
   padding: 1rem;
   border: 1px solid #dcdfe6;
   text-align: left;
+}
+
+.red {
+  color: red;
 }
 </style>
