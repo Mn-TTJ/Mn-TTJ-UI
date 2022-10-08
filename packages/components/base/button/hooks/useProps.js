@@ -1,7 +1,13 @@
 export default function () {
     let props = {
-        text: String,
-        round: Boolean
+        word: String,   //按钮文字
+        round: Boolean, //是否是药丸形状
+        disabled: Boolean,//是否禁用
+        circle: Boolean,//是否是圆形
+        size: String,//按钮大小
+        color: String,//自定义颜色
+        text: Boolean,//是否有边框
+        type:String,//按钮类别
     }
     return props
 }

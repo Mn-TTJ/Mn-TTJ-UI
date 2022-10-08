@@ -18,5 +18,7 @@ module.exports = {
             .tap(options => {
                 return options
             })
-    }
+    },
+    lintOnSave: false,
+
 }
