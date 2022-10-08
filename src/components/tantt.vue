@@ -22,18 +22,15 @@
         <ui-header>Header</ui-header>
         <ui-main>Main</ui-main>
       </ui-container>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-    name:'tantt'
-}
+  name: "tantt",
+};
 </script>
-<script>
+<script></script>
 
-</script>
-
-<style>
-
-</style>
+<style></style>
