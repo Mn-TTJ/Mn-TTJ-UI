@@ -13,21 +13,19 @@
   </button>
 </template>
 
-<script setup>
+<script>
 import { defineProps, computed } from "vue";
 import useProps from "./hooks/useProps";
-
-const props = defineProps(useProps());
-
-var bgc = computed(() => {
-  return props.type === "success" ? "#44bc87" : props.color;
-});
-</script>
-
-<script>
 export default {
   name: "ui-button",
 };
+</script>
+
+<script setup>
+const props = defineProps(useProps());
+var bgc = computed(() => {
+  return props.type === "success" ? "#44bc87" : props.color;
+});
 </script>
 
 <style lang="scss" scoped>
