@@ -1,6 +1,8 @@
 import Button from "./components/base/button/Button"
+import Form from "./components/form/index"
 const components = [
-    Button, Input
+    Button,
+    ...Form.components
 ]
 
 const install = function (Vue) {
