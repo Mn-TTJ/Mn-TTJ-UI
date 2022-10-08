@@ -1,14 +1,9 @@
 <template>
   <div class="hello">
     <div class="con">
-      <ui-switch v-model="dd" sm></ui-switch>
-      <ui-switch v-model="dd"></ui-switch>
-      <ui-switch v-model="dd" lg></ui-switch>
-      <ui-switch v-model="dd" custom>
-        <template #switch>
-          hello
-        </template>
-      </ui-switch>
+      <ui-select v-model="dd" :dataSet="labels" disabled></ui-select>
+      <ui-select v-model="dd" :dataSet="ilabels" multiple></ui-select>
+      <ui-select v-model="dd" multiple lazy :callBack="lazyEvent"></ui-select>
     </div>
   </div>
 </template>
@@ -18,13 +13,31 @@ export default {
   name: 'HelloWorld',
   data() {
     return {
-      dd: true,
-      labels: ['hello', 'world', 'yes?']
+      dd: 'hello',
+      labels: ['hello', 'world', '??'],
+      ilabels: [{ value: 'hello', hasChild: true, children: [{ value: 'he', hasChild: false, children: [] }, { value: 'llo', hasChild: false, children: [] }, { value: 'heo', hasChild: true, children: [{ value: 'he', hasChild: false, children: [] }] }] }, { value: 'world', hasChild: true, children: [{ value: '???', hasChild: false, children: [] }] }]
     }
   },
   watch: {
     dd() {
       console.log(this.dd)
+    }
+  },
+  methods: {
+    lazyEvent(value, gIndex, index) {
+      return new Promise((resolve) => {
+        if (value == null && gIndex == null && index == null) {
+          setTimeout(() => {
+            const date = [{ value: 'hello', hasChild: true }, { value: 'world', hasChild: true }, { value: 'hello', hasChild: false }]
+            resolve(date)
+          }, 4000)
+        } else {
+          setTimeout(() => {
+            const date = [{ value: 'hello', hasChild: true }, { value: 'world', hasChild: true }, { value: 'hello', hasChild: false }]
+            resolve(date)
+          }, 4000)
+        }
+      })
     }
   }
 }
