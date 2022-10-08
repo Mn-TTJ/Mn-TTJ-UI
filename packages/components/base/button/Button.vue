@@ -15,7 +15,7 @@ const props = defineProps(useProps());
 
 <style lang="scss" scoped>
 button {
-  border: 1px solid gray;
+  border: 1px solid #dcdfe6;
   border-radius: 0.2rem;
   background-color: transparent;
 }
