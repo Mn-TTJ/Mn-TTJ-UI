@@ -7,7 +7,9 @@ export default function () {
         size: String,//按钮大小
         color: String,//自定义颜色
         text: Boolean,//是否有边框
-        type:String,//按钮类别
+        type: String,//按钮类别
+        icon: String,//图标
+        loading:Boolean,//是否正在加载
     }
     return props
 }

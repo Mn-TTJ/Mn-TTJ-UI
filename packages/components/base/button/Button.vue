@@ -1,15 +1,38 @@
 <template>
   <button
-    :class="{ round: round, disabled: disabled, circle: circle }"
+    :class="{
+      round: round,
+      circle: circle,
+      noBorder: text,
+      large: size === 'large',
+      small: size === 'small',
+      disabled: disabled || loading,
+    }"
     :style="{
-      height: size === 'large' ? '40px' : size === 'small' ? '20px' : '30px',
-      fontSize: size === 'large' ? '20px' : size === 'small' ? '13px' : '16px',
-      backgroundColor: color,
       backgroundColor: bgc,
-      border: text === true ? 'none' : '1px solid #b8b8b8',
     }"
   >
+    <div class="loading">
+      <i
+        v-if="loading"
+        class="iconfont icon-jiazai loading"
+        :style="{
+          lineHeight:
+            size === 'large' ? '40px' : size === 'small' ? '15px' : '28px',
+        }"
+      ></i>
+    </div>
+
     {{ word }}
+    <i
+      v-if="icon !== undefined && loading !== true"
+      class="iconfont"
+      :class="`icon-${icon}`"
+      :style="{
+        lineHeight:
+          size === 'large' ? '40px' : size === 'small' ? '15px' : '28px',
+      }"
+    ></i>
   </button>
 </template>
 
@@ -29,6 +52,7 @@ var bgc = computed(() => {
 </script>
 
 <style lang="scss" scoped>
+@import "../../../icon/iconfont.css";
 button {
   border: 1px solid rgb(199, 199, 199);
   border-radius: 0.3rem;
@@ -39,13 +63,15 @@ button {
   height: 30px;
   margin-right: 10px;
   transition: all 0.5s;
+  vertical-align: middle;
+
   &:hover {
     background-color: #ddd;
   }
 }
 
 .round {
-  border-radius: 20rem;
+  border-radius: 15px;
 }
 .disabled {
   color: #d1b8b2;
@@ -54,5 +80,35 @@ button {
 }
 .circle {
   border-radius: 50%;
+  padding: 0 6px;
+}
+.loading {
+  display: inline-block;
+  animation: rotating 2s infinite;
+  // opacity: 0.3;
+  // background-color: #ddd;
+}
+.noBorder {
+  border: none;
+}
+.large {
+  height: 40px;
+  font-size: 20px;
+}
+.default {
+  height: 30px;
+  font-size: 16px;
+}
+.small {
+  height: 20px;
+  font-size: 13px;
+}
+@keyframes rotating {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>
