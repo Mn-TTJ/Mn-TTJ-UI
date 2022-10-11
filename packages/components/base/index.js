@@ -8,7 +8,7 @@ import Footer from './footer/Footer';
 import Col from './col/Col';
 import Icon from './icon/Icon';
 import Row from './row/Row';
-
+import Scrollbar from './scrollbar/Scrollbar';
 
 export default {
     components:[
@@ -22,5 +22,6 @@ export default {
         Col,
         Icon,
         Row,
+        Scrollbar,
     ]
 }

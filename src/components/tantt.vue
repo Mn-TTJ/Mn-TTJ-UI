@@ -217,6 +217,17 @@
         <div class="item"></div>
       </ui-col>
     </ui-row>
+
+    <h4>滚动条</h4>
+    <ui-scrollbar height="300">
+      <div :style="{ height: '300px' }"></div>
+      <div :style="{ height: '300px' }"></div>
+      <div :style="{ height: '100px', display: 'inline' }">1111</div>
+    </ui-scrollbar>
+
+    <ui-scrollbar>
+      <div :style="{ width: '2300px', height: '30px' }">1</div>
+    </ui-scrollbar>
   </div>
 </template>
 
