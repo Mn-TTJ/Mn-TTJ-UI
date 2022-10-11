@@ -1,9 +1,9 @@
 <template>
   <div>
-    <!-- <ui-button type="success" word="禁用" disabled></ui-button> -->
+    <ui-button type="success" word="禁用" disabled></ui-button>
     <ui-button type="success" word="world" round></ui-button>
     <ui-button word="disabled" disabled></ui-button>
-    <ui-button type="success" word="11111" round></ui-button>
+    <ui-button type="success" word="1" round></ui-button>
     <ui-button type="" circle icon="xiajiantou" loading></ui-button>
     <ui-button word="large11" size="large" loading></ui-button>
     <ui-button type="" word="我们" size="default" icon="rili"></ui-button>
@@ -30,6 +30,193 @@
         <ui-footer height="50px" bgc="#44bc87">footer</ui-footer>
       </ui-container>
     </div>
+
+    <h4>混合布局</h4>
+
+    <ui-row :gutter="20">
+      <ui-col :colCount="6">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :colCount="6">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :colCount="6">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :colCount="6">
+        <div class="item"></div>
+      </ui-col>
+    </ui-row>
+    <ui-row :gutter="20">
+      <ui-col :colCount="6">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :colCount="12">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :colCount="6">
+        <div class="item"></div>
+      </ui-col>
+    </ui-row>
+
+    <ui-row :gutter="20">
+      <ui-col :colCount="8">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :colCount="8">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :colCount="8">
+        <div class="item"></div>
+      </ui-col>
+    </ui-row>
+
+    <ui-row :gutter="20">
+      <ui-col :colCount="16">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :colCount="8">
+        <div class="item"></div>
+      </ui-col>
+    </ui-row>
+    <ui-row :gutter="20">
+      <ui-col :colCount="8">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :colCount="8">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :colCount="4">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :colCount="4">
+        <div class="item"></div>
+      </ui-col>
+    </ui-row>
+
+    <ui-row :gutter="20">
+      <ui-col :colCount="4">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :colCount="16">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :colCount="4">
+        <div class="item"></div>
+      </ui-col>
+    </ui-row>
+    <h4>列偏移</h4>
+
+    <ui-row :gutter="20">
+      <ui-col :colCount="6">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :colCount="6" :offset="6">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :colCount="6">
+        <div class="item"></div>
+      </ui-col>
+    </ui-row>
+
+    <ui-row :gutter="20">
+      <ui-col :colCount="6" :offset="6">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :colCount="6" :offset="6">
+        <div class="item">222</div>
+      </ui-col>
+    </ui-row>
+    <ui-row :gutter="20">
+      <ui-col :colCount="12" :offset="6">
+        <div class="item">3</div>
+      </ui-col>
+    </ui-row>
+    <h4>对齐方式</h4>
+    <ui-row :gutter="20">
+      <ui-col :colCount="6">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :colCount="6">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :colCount="6">
+        <div class="item"></div>
+      </ui-col>
+    </ui-row>
+    <ui-row :gutter="20" justify="center">
+      <ui-col :colCount="6">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :colCount="6">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :colCount="6">
+        <div class="item"></div>
+      </ui-col>
+    </ui-row>
+    <ui-row :gutter="20" justify="end">
+      <ui-col :colCount="6">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :colCount="6">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :colCount="6">
+        <div class="item"></div>
+      </ui-col>
+    </ui-row>
+
+    <ui-row :gutter="20" justify="space-between">
+      <ui-col :colCount="6">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :colCount="6">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :colCount="6">
+        <div class="item"></div>
+      </ui-col>
+    </ui-row>
+
+    <ui-row :gutter="20" justify="space-around">
+      <ui-col :colCount="6">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :colCount="6">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :colCount="6">
+        <div class="item"></div>
+      </ui-col>
+    </ui-row>
+
+    <ui-row :gutter="20" justify="space-evenly">
+      <ui-col :colCount="6">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :colCount="6">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :colCount="6">
+        <div class="item"></div>
+      </ui-col>
+    </ui-row>
+    <h4>响应式布局</h4>
+    <ui-row :gutter="20">
+      <ui-col :xs="8" :sm="6" :md="4" :lg="6" :xl="1">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :xs="4" :sm="6" :md="8" :lg="6" :xl="11">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :xs="4" :sm="6" :md="8" :lg="6" :xl="11">
+        <div class="item"></div>
+      </ui-col>
+      <ui-col :xs="8" :sm="6" :md="4" :lg="6" :xl="1">
+        <div class="item"></div>
+      </ui-col>
+    </ui-row>
   </div>
 </template>
 
@@ -38,6 +225,14 @@ export default {
   name: "tantt",
 };
 </script>
-<!-- <script></script> -->
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.item {
+  height: 30px;
+  width: 100%;
+  line-height: 30px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: pink;
+}
+</style>

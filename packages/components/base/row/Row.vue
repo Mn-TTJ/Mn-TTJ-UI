@@ -1,11 +1,20 @@
 <template>
-  <component></component>
+  <div :style="{ justifyContent: justify }" class="row"><slot></slot></div>
 </template>
 <script>
+import { defineProps, provide } from "vue";
+import useProps from "./hooks/useProps";
 export default {
   name: "ui-row",
 };
 </script>
-<script setup></script>
+<script setup>
+const props = defineProps(useProps());
+provide("gutter", props.gutter); // 将列间距传给col组件
+</script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.row {
+  display: flex;
+}
+</style>

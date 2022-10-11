@@ -54,17 +54,16 @@ var bgc = computed(() => {
 <style lang="scss" scoped>
 @import "../../../icon/iconfont.css";
 button {
-  border: 1px solid rgb(199, 199, 199);
-  border-radius: 0.3rem;
-  background-color: transparent;
   padding: 0px 10px;
   font-size: 16px;
   font-weight: 100;
   height: 30px;
   margin-right: 10px;
   transition: all 0.5s;
+  border-radius: 0.3rem;
   vertical-align: middle;
-
+  background-color: transparent;
+  border: 1px solid rgb(199, 199, 199);
   &:hover {
     background-color: #ddd;
   }
@@ -85,8 +84,6 @@ button {
 .loading {
   display: inline-block;
   animation: rotating 2s infinite;
-  // opacity: 0.3;
-  // background-color: #ddd;
 }
 .noBorder {
   border: none;
