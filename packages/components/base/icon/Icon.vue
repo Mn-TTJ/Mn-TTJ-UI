@@ -1,17 +1,16 @@
 <template>
-  <header
-    class="ui-header"
-    :style="{ height: height, lineHeight: height, backgroundColor: bgc }"
-  >
-    <slot></slot>
-  </header>
+  <i
+    class="iconfont"
+    :class="`icon-${icon}`"
+    :style="{ fontSize: `${size}px`, color: color }"
+  ></i>
 </template>
 
 <script>
 import { defineProps } from "vue";
 import useProps from "./hooks/useProps";
 export default {
-  name: "ui-header",
+  name: "ui-icon",
 };
 </script>
 <script setup>
@@ -20,10 +19,5 @@ const props = defineProps(useProps());
 </script>
 
 <style lang="scss" scoped>
-.ui-header {
-  background-color: #b3c0d1;
-  color: #333;
-  text-align: center;
-  line-height: 60px;
-}
+@import "../../../icon/iconfont.css";
 </style>

@@ -19,6 +19,6 @@ module.exports = {
                 return options
             })
     },
-    lintOnSave: false,
+    lintOnSave: true,
 
 }

@@ -6,8 +6,10 @@ export default function () {
         circle: Boolean,//是否是圆形
         size: String,//按钮大小
         color: String,//自定义颜色
-        text: Boolean,//是否有边框
-        type:String,//按钮类别
+        text: Boolean,//是否有边框(文字按钮没有边框)
+        icon: String,//图标
+        loading: Boolean,//是否正在加载
+        submit:String,
     }
     return props
 }

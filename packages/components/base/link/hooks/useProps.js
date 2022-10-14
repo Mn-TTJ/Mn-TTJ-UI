@@ -1,9 +1,9 @@
 export default function () {
     let props = {
-        text: String,
         underline: Boolean,
         disabled: Boolean,
         href: String,
+        color:String,
     }
     return props;
 } 
