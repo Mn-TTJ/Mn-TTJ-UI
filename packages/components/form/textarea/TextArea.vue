@@ -10,6 +10,7 @@
 <script>
 import useProps from "./hooks/useProps"
 import useMin from "../hooks/useMin"
+import useForm from '../hooks/useForm'
 import { computed, defineEmits, onMounted, ref, watch } from "vue";
 export default {
     name: "ui-textarea",
@@ -24,6 +25,7 @@ const mValue = computed({
     get: () => props.modelValue,
     set: (val) => emits('update:modelValue', val)
 })
+useForm(props.name, mValue, false)
 const lessInput = useMin(props)
 const tArea = ref(null)
 const inputEvent = () => {

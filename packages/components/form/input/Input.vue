@@ -20,6 +20,7 @@
 <script>
 import useProps from "./hooks/useProps"
 import useMin from "../hooks/useMin"
+import useForm from '../hooks/useForm'
 import { defineEmits, computed } from "vue";
 export default {
     name: "ui-input",
@@ -33,6 +34,7 @@ const mValue = computed({
     get: () => props.modelValue,
     set: (val) => emits('update:modelValue', val)
 })
+useForm(props.name, mValue, false)
 const lessInput = useMin(props)
 const clearInput = (event) => {
     const target = event.srcElement ? event.srcElement : event.target;

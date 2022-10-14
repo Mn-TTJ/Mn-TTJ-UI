@@ -1,12 +1,13 @@
 <template>
     <div class="checkbox">
-        <span :class="{'hasBorder':hasBorder,'selected-bgc':hasBorder&&allFlag}" v-if="all" @click="selectAll">
+        <span :class="{'hasBorder':hasBorder,'selected-bgc':hasBorder&&allFlag,'disabled':disabled}" v-if="all"
+            @click="selectAll">
             <label v-if="!hasBorder" class="select-box" :class="{'selected-box':allFlag}">&#xec9e;</label>
             <label :class="{'selected-label':allFlag}">全选</label>
         </span>
-        <span :class="{'hasBorder':hasBorder,'selected-bgc':hasBorder&&selections[index]}"
+        <span :class="{'hasBorder':hasBorder,'selected-bgc':hasBorder&&selections[index],'disabled':disabled}"
             v-for="(label,index) in labels" :key="index">
-            <input type="checkbox" :id=index v-model="mValue" :value=label />
+            <input type="checkbox" :id=index v-model="mValue" :value=label :disabled="disabled" />
             <label v-if="!hasBorder" class="select-box" :class="{'selected-box':selections[index]}"
                 :for=index>&#xec9e;</label>
             <label :class="{'selected-label':selections[index]}" :for=index>{{label}}</label>
@@ -18,6 +19,7 @@
 <script>
 import { watch, computed, reactive, defineEmits, ref } from 'vue';
 import useProps from "./hooks/useProps"
+import useForm from '../hooks/useForm'
 export default {
     name: "ui-checkbox",
 };
@@ -34,6 +36,7 @@ const mValue = computed({
 const selections = reactive([])
 const allFlag = ref(false)
 const selectAll = () => {
+    if (props.disabled) return
     if (allFlag.value) {
         mValue.value = []
         allFlag.value = false
@@ -48,6 +51,7 @@ const selectAll = () => {
         allFlag.value = true
     }
 }
+useForm(props.name, mValue, false)
 watch(mValue, () => {
     const set = new Set(mValue.value)
     for (let index in props.labels) {
@@ -71,11 +75,13 @@ span {
     padding: 0.5rem;
     display: inline-flex;
     align-items: center;
+    background-color: white;
 
     label {
         user-select: none;
         font-size: 1rem;
         line-height: 1rem;
+        cursor: inherit;
     }
 
     &:hover {
@@ -138,6 +144,16 @@ input {
         &>label:nth-last-child(1) {
             color: white;
         }
+    }
+}
+
+.disabled {
+    cursor: not-allowed;
+    border-color: #a7a3a3;
+    background-color: #f3f5f8;
+
+    label {
+        color: #a7a3a3 !important;
     }
 }
 </style>

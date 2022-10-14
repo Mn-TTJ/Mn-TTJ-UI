@@ -1,8 +1,8 @@
 <template>
     <div v-if="!custom">
-        <span :class="{'selected':selected==index,'btn':btn,'selected-full':full&&selected==index}"
-            v-for="(label,index) in labels" :key="index" @click="selecteRadio(index)">
-            <input type="radio" :id="index+group" :name="group" :value="label" v-model="mValue">
+        <span :class="{'selected':selected==index,'btn':btn,'selected-full':full&&selected==index,'disabled':disabled}"
+            :style="ustyle" v-for="(label,index) in labels" :key="index" @click="selecteRadio(index)">
+            <input type="radio" :id="index+group" :name="group" :value="label" v-model="mValue" :disabled="disabled">
             <label :for="index+group" class="square" v-if="!btn"
                 :class="{'circular':circular,'noBorder':noBorder,'tick':tick}"></label>
             <label :for="index+group" class="text">{{label}}</label><br>
@@ -10,8 +10,8 @@
     </div>
     <!-- 自定义模式 -->
     <div v-if="custom">
-        <span v-for="(label,index) in labels" :key="index" @click="selecteRadio(index)">
-            <input type="radio" :id="index+group" :name="group" :value="label" v-model="mValue">
+        <span :class="{'disabled':disabled}" v-for="(label,index) in labels" :key="index" @click="selecteRadio(index)">
+            <input type="radio" :id="index+group" :name="group" :value="label" v-model="mValue" :disabled="disabled">
             <label :for="index+group">
                 <slot name="btn" :selected="selected==index" :label="label"></slot>
             </label>
@@ -21,6 +21,7 @@
 
 <script>
 import useProps from './hooks/useProps';
+import useForm from '../hooks/useForm'
 import { defineEmits, computed, ref, onMounted } from 'vue';
 export default {
     name: 'ui-radio'
@@ -35,8 +36,10 @@ const mValue = computed({
     get: () => props.modelValue,
     set: (val) => emits('update:modelValue', val)
 })
+useForm(props.name, mValue, false)
 const selected = ref(-1)
 const selecteRadio = (index) => {
+    if (props.disabled) return
     selected.value = index
 }
 onMounted(() => {
@@ -53,6 +56,7 @@ span {
     margin: 0rem 0.2rem;
     display: inline-flex;
     align-items: center;
+    background-color: white;
 
     &:hover {
         .text {
@@ -134,6 +138,14 @@ input {
         .text {
             color: white;
         }
+    }
+}
+
+.disabled {
+    cursor: not-allowed;
+
+    label {
+        cursor: inherit;
     }
 }
 </style>

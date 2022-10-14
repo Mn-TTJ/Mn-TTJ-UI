@@ -1,5 +1,6 @@
 export default function () {
     let props = {
+        name: String,
         modelValue: String | Number,
         disabled: Boolean,
         parser: String | Number,

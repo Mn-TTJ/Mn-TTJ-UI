@@ -1,57 +1,42 @@
 <template>
-  <div class="hello">
-    <div class="con">
-      <ui-select v-model="dd" :dataSet="labels" disabled></ui-select>
-      <ui-select v-model="dd" :dataSet="ilabels" multiple></ui-select>
-      <ui-select v-model="dd" multiple lazy :callBack="lazyEvent"></ui-select>
-    </div>
+  <div style="padding:1rem">
+    <ui-form ref="form">
+      <ui-upload name="one" text="hello" picture ref="files">
+      </ui-upload>
+      <ui-autocompelete name="ss" v-model="autocom" :tips="[1,2,3,4,54,2,34,5,667]"></ui-autocompelete>
+      <ui-checkbox name="aa" v-model="check" :labels="['aa','xx','ww']" hasBorder></ui-checkbox>
+      <ui-colorpicker name="dd" v-model="color" disabled></ui-colorpicker>
+      <ui-datepicker name="cc" v-model="date"></ui-datepicker>
+      <ui-radio name="xx" v-model="radio" group="he" :labels="['1','3','4']" btn full disabled></ui-radio>
+      <ui-switch name="ff" v-model="swi" disabled></ui-switch>
+      <button @click="getForm">click</button>
+    </ui-form>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'HelloWorld',
-  data() {
-    return {
-      dd: 'hello',
-      labels: ['hello', 'world', '??'],
-      ilabels: [{ value: 'hello', hasChild: true, children: [{ value: 'he', hasChild: false, children: [] }, { value: 'llo', hasChild: false, children: [] }, { value: 'heo', hasChild: true, children: [{ value: 'he', hasChild: false, children: [] }] }] }, { value: 'world', hasChild: true, children: [{ value: '???', hasChild: false, children: [] }] }]
-    }
-  },
-  watch: {
-    dd() {
-      console.log(this.dd)
-    }
-  },
-  methods: {
-    lazyEvent(value, gIndex, index) {
-      return new Promise((resolve) => {
-        if (value == null && gIndex == null && index == null) {
-          setTimeout(() => {
-            const date = [{ value: 'hello', hasChild: true }, { value: 'world', hasChild: true }, { value: 'hello', hasChild: false }]
-            resolve(date)
-          }, 4000)
-        } else {
-          setTimeout(() => {
-            const date = [{ value: 'hello', hasChild: true }, { value: 'world', hasChild: true }, { value: 'hello', hasChild: false }]
-            resolve(date)
-          }, 4000)
-        }
-      })
-    }
-  }
+<script setup>
+import { ref } from 'vue';
+
+const form = ref(null)
+const autocom = ref('')
+const check = ref([])
+const color = ref('')
+const date = ref('2022-11-23')
+const radio = ref('he')
+const swi = ref(false)
+
+const getForm = () => {
+  form.value.getForm().then(dateForm => {
+    dateForm.forEach((value, key) => console.log(key, value))
+  }).catch(Err => {
+    console.log(Err)
+  })
 }
+
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-.con {
-  padding: 1rem;
-  border: 1px solid #dcdfe6;
-  text-align: left;
-}
-
-.red {
-  color: red;
-}
+<style scoped>
+/* div {
+  background-color: black;
+} */
 </style>

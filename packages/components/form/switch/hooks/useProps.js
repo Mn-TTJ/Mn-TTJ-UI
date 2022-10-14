@@ -1,5 +1,7 @@
 export default function () {
     let props = {
+        name: String,
+        disabled: Boolean,
         sm: Boolean,
         lg: Boolean,
         modelValue: Boolean,

@@ -1,14 +1,14 @@
 <template>
     <template v-if="!custom">
-        <div v-if="(!sm&&!lg)||(sm&&lg)" class="switch md" :class="{'switch-open-md':mValue}" @click="pressDown"
+        <div v-if="(!sm&&!lg)||(sm&&lg)" class="switch md" :class="{'switch-open-md':mValue,'disabled':disabled}"
+            @click="pressDown" :style="{'background-color':backgroundColor}">
+            <span :style="{'background-color':sliderColor}"></span>
+        </div>
+        <div v-if="sm&&!lg" class="switch sm" :class="{'switch-open-sm':mValue,'disabled':disabled}" @click="pressDown"
             :style="{'background-color':backgroundColor}">
             <span :style="{'background-color':sliderColor}"></span>
         </div>
-        <div v-if="sm&&!lg" class="switch sm" :class="{'switch-open-sm':mValue}" @click="pressDown"
-            :style="{'background-color':backgroundColor}">
-            <span :style="{'background-color':sliderColor}"></span>
-        </div>
-        <div v-if="!sm&&lg" class="switch lg" :class="{'switch-open-lg':mValue}" @click="pressDown"
+        <div v-if="!sm&&lg" class="switch lg" :class="{'switch-open-lg':mValue,'disabled':disabled}" @click="pressDown"
             :style="{'background-color':backgroundColor}">
             <span :style="{'background-color':sliderColor}"></span>
         </div>
@@ -24,6 +24,7 @@
 <script>
 import { computed, defineEmits } from 'vue'
 import useProps from './hooks/useProps';
+import useForm from '../hooks/useForm'
 export default {
     name: 'ui-switch'
 }
@@ -37,7 +38,9 @@ const mValue = computed({
     get: () => props.modelValue,
     set: (val) => emits('update:modelValue', val)
 })
+useForm(props.name, mValue, false)
 const pressDown = () => {
+    if (props.disabled) return
     mValue.value = !mValue.value
 }
 const backgroundColor = computed(() => {
@@ -126,5 +129,9 @@ span {
 
 .switch-custom {
     display: inline-block;
+}
+
+.disabled {
+    cursor: not-allowed;
 }
 </style>
