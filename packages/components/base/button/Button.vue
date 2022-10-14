@@ -9,10 +9,12 @@
       disabled: disabled || loading,
     }"
     :style="{
-      backgroundColor: bgc,
+      backgroundColor: color,
     }"
+    @click="submit"
   >
     <div class="loading">
+      <!-- 加载图标 -->
       <i
         v-if="loading"
         class="iconfont icon-jiazai loading"
@@ -24,6 +26,7 @@
     </div>
 
     {{ word }}
+    <!-- 图标 -->
     <i
       v-if="icon !== undefined && loading !== true"
       class="iconfont"
@@ -37,7 +40,7 @@
 </template>
 
 <script>
-import { defineProps, computed } from "vue";
+import { defineProps, inject } from "vue";
 import useProps from "./hooks/useProps";
 export default {
   name: "ui-button",
@@ -45,10 +48,16 @@ export default {
 </script>
 
 <script setup>
+// eslint-disable-next-line
 const props = defineProps(useProps());
-var bgc = computed(() => {
-  return props.type === "success" ? "#44bc87" : props.color;
-});
+
+// 表单
+const submitEvent = inject("submit");
+const submit = (success, error) => {
+  submitEvent()
+    .then((formDate) => success(formDate))
+    .catch((Err) => error(Err));
+};
 </script>
 
 <style lang="scss" scoped>
@@ -58,7 +67,6 @@ button {
   font-size: 16px;
   font-weight: 100;
   height: 30px;
-  margin-right: 10px;
   transition: all 0.5s;
   border-radius: 0.3rem;
   vertical-align: middle;

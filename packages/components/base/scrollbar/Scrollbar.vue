@@ -1,64 +1,68 @@
 <template>
   <div class="scrollbar" :style="{ height: `${height}px` }" ref="scrollbar">
-    <div class="container" ref="container">
-      <slot></slot>
-    </div>
+    <slot></slot>
   </div>
 </template>
 
 <script>
-import { defineProps, onMounted, ref } from "vue";
+import { defineProps, ref, onMounted, onUpdated } from "vue";
 import useProps from "./hooks/useProps";
 export default {
   name: "ui-scrollbar",
+  methods: {
+    changeBgColor() {
+      this.themeColor = "pink";
+    },
+  },
 };
 </script>
 
 <script setup>
+// eslint-disable-next-line
 const props = defineProps(useProps());
-let scrollbar = ref(null);
-let container = ref(null);
+const scrollbar = ref(null);
+let height = ref(props.height);
 onMounted(() => {
-  let width = container.value.clientWidth;
-  let height = container.value.clientHeight;
-  if (height > props.height) {
-    scrollbar.value.classList.add("overflowY");
+  if (scrollbar.value.clientHeight > props.maxHeight) {
+    height.value = props.maxHeight;
   }
-  if (width > window.outerWidth) {
-    scrollbar.value.classList.add("overflowX");
+  // document.getElementsByTagName("body")[0].style.setProperty("--color", "pink");
+});
+onUpdated(() => {
+  console.log("子", scrollbar.value.clientHeight);
+  if (scrollbar.value.clientHeight > props.maxHeight) {
+    height.value = props.maxHeight;
   }
 });
 </script>
 
 <style lang="scss" scoped>
+* {
+  // 兼容火狐
+  & {
+    scrollbar-width: thin;
+    // scrollbar-color: #44bc87 #b9d7ca;
+    scrollbar-color: #44bc87;
+    // scrollbar-color: v-bind("themeColor");
+  }
+}
 .scrollbar {
-  background-color: pink;
-}
-.overflowY {
   overflow-y: scroll;
+  position: relative;
 }
-.overflowX {
-  overflow-x: scroll;
-}
-/* 整个滚动条 */
 ::-webkit-scrollbar {
-  width: 5px;
-
-  //   background-color: transparent;
-  background-color: blue;
+  width: 10px;
+  height: 10px;
+  // background-color: blue;
 }
-
 /* 滚动条上的滚动滑块 */
 ::-webkit-scrollbar-thumb {
-  border-radius: 5px;
-
+  // border-radius: 10px;
+  // background-color: v-bind("themeColor");
   background-color: #44bc87;
 }
 // 滚动轨道 会遮住滚动条原本设置的bgc
 ::-webkit-scrollbar-track {
-  background-color: #b9d7ca;
-}
-.container {
-  display: inline-block;
+  // background-color: #b9d7ca;
 }
 </style>

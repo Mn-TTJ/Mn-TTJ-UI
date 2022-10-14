@@ -1,5 +1,8 @@
 <template>
-  <main class="ui-main" :style="{ backgroundColor: bgc }">
+  <main
+    class="ui-main"
+    :style="{ backgroundColor: bgc, height: `${height}px` }"
+  >
     <slot></slot>
   </main>
 </template>
@@ -12,6 +15,7 @@ export default {
 </script>
 
 <script setup>
+// eslint-disable-next-line
 const props = defineProps(useProps());
 </script>
 

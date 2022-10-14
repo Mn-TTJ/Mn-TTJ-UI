@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h4>按钮</h4>
     <ui-button type="success" word="禁用" disabled></ui-button>
     <ui-button type="success" word="world" round></ui-button>
     <ui-button word="disabled" disabled></ui-button>
@@ -9,17 +10,21 @@
     <ui-button type="" word="我们" size="default" icon="rili"></ui-button>
     <ui-button type="" word="默认"></ui-button>
     <ui-button type="" word="small" size="small" icon="duigoux"></ui-button>
-    <ui-button type="" word="11" color="pink"></ui-button>
+    <ui-button type="" word="11" color="#44bc87"></ui-button>
     <ui-button type="" word="文字按钮" text></ui-button>
     <ui-button type="" icon="jiazai"></ui-button>
     <br />
-    <br />
+
+    <h4>链接</h4>
     <ui-link text="link">default</ui-link>
     <ui-link text="link" :underline="true">underline</ui-link>
     <ui-link text="link" :disabled="true">noclick</ui-link>
     <ui-link :disabled="false" href="https://www.apple.com" color="#44bc87">
       apple
     </ui-link>
+    <br />
+
+    <h4>布局</h4>
     <div>
       <ui-container>
         <ui-header height="40px" bgc="#44bc87">Header</ui-header>
@@ -29,10 +34,48 @@
         </ui-container>
         <ui-footer height="50px" bgc="#44bc87">footer</ui-footer>
       </ui-container>
+      <br />
+
+      <ui-container>
+        <ui-header height="40px" bgc="#44bc87">Header</ui-header>
+        <ui-main :height="200">Main</ui-main>
+        <ui-footer height="50px" bgc="#44bc87">footer</ui-footer>
+      </ui-container>
+      <br />
+
+      <ui-container>
+        <ui-container>
+          <ui-aside width="100px" bgc="pink">aside</ui-aside>
+        </ui-container>
+
+        <ui-main>Main</ui-main>
+      </ui-container>
+      <br />
+
+      <ui-container>
+        <ui-aside width="100px" bgc="pink">aside</ui-aside>
+        <ui-container>
+          <ui-header height="40px" bgc="#44bc87">Header</ui-header>
+
+          <ui-main>Main</ui-main>
+          <ui-footer height="50px" bgc="#44bc87">footer</ui-footer>
+        </ui-container>
+      </ui-container>
+      <br />
+
+      <ui-container>
+        <ui-header>Header</ui-header>
+        <ui-container>
+          <ui-aside width="200px">Aside</ui-aside>
+          <ui-container>
+            <ui-main>Main</ui-main>
+            <ui-footer>Footer</ui-footer>
+          </ui-container>
+        </ui-container>
+      </ui-container>
     </div>
 
     <h4>混合布局</h4>
-
     <ui-row :gutter="20">
       <ui-col :colCount="6">
         <div class="item"></div>
@@ -219,22 +262,46 @@
     </ui-row>
 
     <h4>滚动条</h4>
-    <ui-scrollbar height="300">
-      <div :style="{ height: '300px' }"></div>
-      <div :style="{ height: '300px' }"></div>
-      <div :style="{ height: '100px', display: 'inline' }">1111</div>
+    <ui-scrollbar :native="true" height="180" color="blue">
+      <div :style="{ height: '1280px', backgroundColor: 'pink' }"></div>
+    </ui-scrollbar>
+    <ui-scrollbar height="200">
+      <div :style="{ height: '1500px' }">133</div>
+      <div :style="{ height: '100px' }">2222</div>
+      <!-- <div :style="{ height: '300px' }">2222</div> -->
     </ui-scrollbar>
 
     <ui-scrollbar>
-      <div :style="{ width: '2300px', height: '30px' }">1</div>
+      <div :style="{ width: '1600px', height: '30px' }">111111</div>
     </ui-scrollbar>
+    <h4>
+      最大高度
+      <button @click="arr.push(0)">add</button>
+      <button @click="arr.pop()">del</button>
+    </h4>
+    <ui-scrollbar :maxHeight="150">
+      <ul>
+        <li v-for="(item, idx) in arr" :key="idx">{{ item }}</li>
+      </ul>
+    </ui-scrollbar>
+    <h4>图标</h4>
+    <ui-icon icon="jiazai" size="50" color="#44bc87"></ui-icon>
   </div>
 </template>
 
 <script>
+import { reactive, onUpdated } from "vue";
+
 export default {
   name: "tantt",
 };
+</script>
+<script setup>
+let arr = reactive(new Array(8).fill(0));
+onUpdated(() => {
+  console.log("父");
+  console.log(arr);
+});
 </script>
 
 <style scoped lang="scss">

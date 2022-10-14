@@ -14,6 +14,7 @@ export default {
 };
 </script>
 <script setup>
+// eslint-disable-next-line
 const props = defineProps(useProps());
 </script>
 

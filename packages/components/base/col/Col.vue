@@ -26,6 +26,7 @@ export default {
 </script>
 
 <script setup>
+// eslint-disable-next-line
 const props = defineProps(useProps());
 const gutter = inject("gutter"); //从row组件获取列间距
 
@@ -41,9 +42,10 @@ const marginLeft = computed(() => {
   if (props.offset) {
     return (props.offset / 24) * windowWidth.value;
   }
+  return 0;
 });
 
-function setSpanWidth() {
+const setSpanWidth = () => {
   windowWidth.value = window.innerWidth;
   if (props.colCount === undefined) {
     if (window.innerWidth > 1920) {
@@ -58,14 +60,12 @@ function setSpanWidth() {
       span.value = props.xs;
     }
   }
-}
+};
 
 onMounted(() => {
   // 初始化 没有设置colCount（响应式布局）
   setSpanWidth();
-  window.addEventListener("resize", () => {
-    setSpanWidth();
-  });
+  window.addEventListener("resize", setSpanWidth);
 });
 onUnmounted(() => {
   // 组件销毁，取消监听事件

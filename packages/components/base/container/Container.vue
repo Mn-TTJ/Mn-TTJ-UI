@@ -7,9 +7,16 @@
   </section>
 </template>
 
-<script setup>
+<script>
 import { useSlots, computed } from "vue";
+export default {
+  name: "ui-container",
+};
+</script>
+<script setup>
+// eslint-disable-next-line
 const slots = useSlots();
+// 根据slot内容判断是上下布局还是左右布局
 let isVertical = computed(() => {
   if (slots && slots.default) {
     const vNodes = slots.default();
@@ -23,17 +30,9 @@ let isVertical = computed(() => {
 });
 </script>
 
-<script>
-export default {
-  name: "ui-container",
-};
-</script>
-
 <style lang="scss" scoped>
 .container {
   display: flex;
-  flex-direction: row;
   flex-grow: 1;
-  // display: inline-block;
 }
 </style>

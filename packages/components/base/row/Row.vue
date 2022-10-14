@@ -9,6 +9,7 @@ export default {
 };
 </script>
 <script setup>
+// eslint-disable-next-line
 const props = defineProps(useProps());
 provide("gutter", props.gutter); // 将列间距传给col组件
 </script>

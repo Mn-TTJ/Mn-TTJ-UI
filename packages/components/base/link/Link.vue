@@ -15,7 +15,7 @@
 <script setup>
 import { defineProps } from "vue";
 import useProps from "./hooks/useProps";
-
+// eslint-disable-next-line
 const props = defineProps(useProps());
 </script>
 
@@ -30,6 +30,7 @@ a {
   cursor: pointer;
   &:hover {
     text-decoration: underline;
+    color: blue;
   }
 }
 .disabled {
@@ -38,6 +39,7 @@ a {
   cursor: not-allowed;
   &:hover {
     text-decoration: none;
+    color: #d1b8b2;
   }
 }
 </style>
