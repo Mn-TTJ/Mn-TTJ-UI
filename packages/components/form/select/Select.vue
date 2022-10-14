@@ -40,6 +40,7 @@ import { ref, defineEmits, computed } from 'vue'
 import useProps from './hooks/useProps';
 import useOnpanel from './hooks/useOnpanel'
 import useMultiple from './hooks/useMultiple'
+import useForm from '../hooks/useForm'
 export default {
     name: 'ui-select'
 }
@@ -53,6 +54,7 @@ const mValue = computed({
     get: () => props.modelValue,
     set: (val) => emits('update:modelValue', val)
 })
+useForm(props.name, mValue, false)
 const onPanel = ref(false)
 const isOnPanel = useOnpanel(onPanel)
 const openPanel = async () => {
@@ -117,6 +119,7 @@ const { multipleDate, multiplePath, lazy, setMultipleValue } = useMultiple(props
     position: absolute;
     display: none;
     width: 100%;
+    z-index: 1;
 }
 
 .on-panel {

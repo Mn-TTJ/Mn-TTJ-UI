@@ -1,8 +1,9 @@
 <template>
     <div class="color-contianer">
-        <label :style="{'color':mValue,'margin':'0rem 0.2rem'}">{{mValue}}</label>
+        <label v-if="show" :style="{'color':mValue,'margin':'0rem 0.2rem'}">{{mValue}}</label>
         <span class="color-picker">
-            <span class="color-show" :style="{'background-color':mValue}" @click="getColor"></span>
+            <span class="color-show" :class="{'disabled':disabled}" :style="{'background-color':mValue}"
+                @click="getColor"></span>
             <input type="color" v-model="mValue" ref="picker" />
         </span>
     </div>
@@ -11,6 +12,7 @@
 <script>
 import { ref, watch, computed, defineEmits, onMounted } from 'vue'
 import useProps from "./hooks/useProps"
+import useForm from '../hooks/useForm'
 export default {
     name: 'ui-colorpicker'
 }
@@ -26,12 +28,14 @@ const mValue = computed({
 })
 const picker = ref(null)
 const getColor = () => {
+    if (props.disabled) return
     picker.value.click()
 }
 const checkColor = () => {
     const patte = /^[#][0-9a-f]{6}/
     if (!patte.test(mValue.value)) mValue.value = '#000000'
 }
+useForm(props.name, mValue, false)
 onMounted(() => {
     checkColor()
 })
@@ -69,5 +73,9 @@ input {
     display: inline-block;
     width: 4rem;
     height: 1.5rem;
+}
+
+.disabled {
+    cursor: not-allowed;
 }
 </style>

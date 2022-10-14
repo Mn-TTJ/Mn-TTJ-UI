@@ -16,7 +16,6 @@ const components = [
     Footer,
     ...Form.components
 ]
-console.log(components, '111');
 const install = function (Vue) {
     components.forEach(component => {
         Vue.component(component.name, component)

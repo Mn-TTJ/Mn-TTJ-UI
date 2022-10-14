@@ -22,6 +22,7 @@
 <script>
 import useProps from "./hooks/useProps"
 import uiInput from "../input/Input.vue"
+import useForm from '../hooks/useForm'
 import { defineEmits, computed, ref } from "vue";
 export default {
     name: "ui-autocompelete",
@@ -48,6 +49,7 @@ const onBlur = () => {
 const selectTip = (tip) => {
     mValue.value = tip
 }
+useForm(props.name, mValue, false)
 </script>
 
 <style lang="scss" scoped>
@@ -66,6 +68,7 @@ const selectTip = (tip) => {
     border: 1px solid #dcdfe6;
     border-radius: 0.1rem;
     overflow: hidden;
+    z-index: 1;
 
     ul {
         list-style: none;
@@ -76,6 +79,13 @@ const selectTip = (tip) => {
 
         li:hover {
             background-color: #f6f7f9;
+        }
+
+        overflow: auto;
+        max-height: 12rem;
+
+        &::-webkit-scrollbar {
+            display: none;
         }
     }
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <HelloWorld />
-    <tantt />
+    <tantt v-if="false" />
   </div>
 </template>
 
