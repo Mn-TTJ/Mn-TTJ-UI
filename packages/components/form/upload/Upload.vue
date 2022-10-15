@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, defineEmits, defineExpose } from 'vue';
 import useProps from './hooks/useProps'
 import useFileHanding from './hooks/useFileHanding'
 import useForm from '../hooks/useForm'

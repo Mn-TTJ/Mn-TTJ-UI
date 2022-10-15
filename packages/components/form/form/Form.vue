@@ -7,6 +7,7 @@
 <script>
 import useProps from './hooks/useProps'
 import useForm from './hooks/useForm';
+import { defineExpose } from 'vue'
 export default {
     name: 'ui-form'
 }

@@ -15,7 +15,7 @@ export default function (name, mValue, isFile = false) {
     })
     watch(form.isGetForm, () => {
         if (form.isGetForm.value) {
-            if (!name || !name instanceof String) { form.catchError(new Error('this input box does not have a legal name')) }
+            if (!name || !(name instanceof String)) { form.catchError(new Error('this input box does not have a legal name')) }
             else {
                 if (!isFile) {
                     form.setForm(name, mValue.value)
