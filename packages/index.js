@@ -1,8 +1,10 @@
 import Base from "./components/base/index";
 import Form from "./components/form/index"
+import Navigation from "./components/navigation/index";
 const components = [
     ...Base.components,
-    ...Form.components
+    ...Form.components,
+    ...Navigation.components
 ]
 const install = function (Vue) {
     components.forEach(component => {
