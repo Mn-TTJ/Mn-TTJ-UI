@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <HelloWorld v-if="false" />
-    <tantt v-if="false" />
+    <!-- <tantt /> -->
     <Feedback />
   </div>
 </template>

@@ -1,17 +1,17 @@
 <template>
   <div>
     <h4>按钮</h4>
-    <ui-button type="success" word="禁用" disabled></ui-button>
-    <ui-button type="success" word="world" round></ui-button>
+    <ui-button type="success" disabled>禁用</ui-button>
+    <ui-button type="success" word="world" round>world</ui-button>
     <ui-button word="disabled" disabled></ui-button>
-    <ui-button type="success" word="1" round></ui-button>
+    <ui-button type="success" round>1</ui-button>
     <ui-button type="" circle icon="xiajiantou" loading></ui-button>
-    <ui-button word="large11" size="large" loading></ui-button>
-    <ui-button type="" word="我们" size="default" icon="rili"></ui-button>
-    <ui-button type="" word="默认"></ui-button>
-    <ui-button type="" word="small" size="small" icon="duigoux"></ui-button>
-    <ui-button type="" word="11" color="#44bc87"></ui-button>
-    <ui-button type="" word="文字按钮" text></ui-button>
+    <ui-button size="large" loading>large11</ui-button>
+    <ui-button type="" size="default" icon="rili">我们</ui-button>
+    <ui-button type="">默认</ui-button>
+    <ui-button type="" size="small" icon="duigoux">small</ui-button>
+    <ui-button type="" color="#44bc87">11</ui-button>
+    <ui-button type="" text>文字按钮</ui-button>
     <ui-button type="" icon="jiazai"></ui-button>
     <br />
 

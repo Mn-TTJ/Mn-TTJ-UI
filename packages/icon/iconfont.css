@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3687690 */
-  src: url('iconfont.woff2?t=1665280400746') format('woff2'),
-       url('iconfont.woff?t=1665280400746') format('woff'),
-       url('iconfont.ttf?t=1665280400746') format('truetype');
+  src: url('iconfont.woff2?t=1665810431812') format('woff2'),
+       url('iconfont.woff?t=1665810431812') format('woff'),
+       url('iconfont.ttf?t=1665810431812') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,50 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-close:before {
+  content: "\e747";
+}
+
+.icon-lajixiang:before {
+  content: "\e618";
+}
+
+.icon-tupian:before {
+  content: "\e8ba";
+}
+
+.icon-tupianliebiao:before {
+  content: "\e69e";
+}
+
+.icon-liebiao:before {
+  content: "\e850";
+}
+
+.icon-liebiao1:before {
+  content: "\e716";
+}
+
+.icon-wenjian:before {
+  content: "\e631";
+}
+
+.icon-shizhong:before {
+  content: "\e6bc";
+}
+
+.icon-zuojiantou-01:before {
+  content: "\e61c";
+}
+
+.icon-shuangxianyoujiantou:before {
+  content: "\e62d";
+}
+
+.icon-shuangxianzuojiantou:before {
+  content: "\e62e";
 }
 
 .icon-jiazai:before {
