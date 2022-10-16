@@ -8,9 +8,12 @@
             </label>
         </div>
         <div class="dropdown-panel" :class="{'is-panel':isOnPanel,'is-sm-panel':sm,'is-lg-panel':lg}" ref="panel">
-            <ul :class="{'is-shadow':shadow}" :style="panelStyle">
+            <ul v-if="!custom" :class="{'is-shadow':shadow}" :style="panelStyle">
                 <li v-for="(option,index) in options" :key="index" @click="option.callBack(index)">{{option.label}}</li>
             </ul>
+            <template v-else>
+                <slot name="panel"></slot>
+            </template>
         </div>
     </div>
 </template>

@@ -1,19 +1,26 @@
 <template>
-  <div>
-    <ui-dropdown btn onlyText :options="[{label:'hello',callBack:a},{label:'world'},{label:'ge'}]">
-      click me
-    </ui-dropdown>
+  <div class="e" ref="e">
+    <div class="c"></div>
+    <ui-backtop :root="e">
+      heelo</ui-backtop>
   </div>
 </template>
 
 <script setup>
-const a = (e) => {
-  console.log(e)
-}
+import { ref } from 'vue'
+const e = ref(null)
 </script>
 
 <style scoped>
-div {
-  text-align: left;
+.e {
+  height: 30rem;
+  width: 20rem;
+  overflow: scroll;
+}
+
+.c {
+  height: 60rem;
+  width: 10rem;
+  background-color: antiquewhite;
 }
 </style>

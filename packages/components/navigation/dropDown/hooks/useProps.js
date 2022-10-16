@@ -19,7 +19,8 @@ export default function () {
         pstyle: {
             type: Object,
             default: {}
-        }
+        },
+        custom: Boolean
     }
     return props
 }

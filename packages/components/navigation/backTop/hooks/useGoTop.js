@@ -1,39 +1,40 @@
 export default function (props) {
     const goTop = () => {
-        const target = props.target
-        if (typeof window.getComputedStyle(target).scrollBehavior === 'undefined') {
-            scrollToTop(target)
+        const root = props.root
+        if (typeof window.getComputedStyle(root).scrollBehavior === 'undefined') {
+            const scrollTop = root.scrollTop
+            scrollToTop(root, scrollTop)
         } else {
-            if (!target.classList.contains('smooth'))
-                target.classList.add("smooth");
-            target.scrollTop = 0
+            if (!root.classList.contains('smooth'))
+                root.classList.add("smooth");
+            else root.scrollTop = 0
         }
     }
 
-    const scrollToTop = (target) => {
-        const clientHeight = target.clientHeight
-        const scrollTop = target.scrollTop
-        if (target.scrollTop < clientHeight) {
+    const scrollToTop = (root, scrollTop) => {
+        const clientHeight = root.clientHeight
+        if (root.scrollTop < clientHeight) {
             const timer = setInterval(() => {
-                if (target.scrollTop == 0) {
+                if (root.scrollTop == 0) {
                     clearInterval(timer)
                 }
                 else {
                     const step = clientHeight / 20
-                    target.scrollTop = target.scrollTop > step ? target.scrollTop - step : 0
+                    root.scrollTop = root.scrollTop > step ? root.scrollTop - step : 0
                 }
             }, 16)
         } else {
-            const step = scrollTop / 40
+            const step = scrollTop / 30
             const timer = setInterval(() => {
-                if (target.scrollTop == 0) {
+                if (root.scrollTop == 0) {
                     clearInterval(timer)
                 }
                 else {
-                    target.scrollTop = target.scrollTop > step ? target.scrollTop - step : 0
+                    root.scrollTop = root.scrollTop > step ? root.scrollTop - step : 0
                 }
             }, 16)
         }
     }
+
     return goTop
 }

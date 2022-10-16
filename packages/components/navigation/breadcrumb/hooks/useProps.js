@@ -1,10 +1,15 @@
 export default function () {
     let props = {
-        navSet: Array,
+        useName: Boolean,
+        useQuery: Boolean,
         replace: Boolean,
         separator: String,
         arrow: Boolean,
-        custom: Boolean
+        custom: Boolean,
+        start: {
+            default: 1,
+            type: Number
+        }
     }
     return props
 }

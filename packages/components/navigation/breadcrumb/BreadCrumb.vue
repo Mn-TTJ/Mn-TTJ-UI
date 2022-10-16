@@ -1,8 +1,8 @@
 <template>
     <div class="bread-crumb">
-        <template v-for="(nav,index) in navSet" :key="index">
-            <span :class="{'separator':separator,'arrow':arrow}" @click="goPath(nav.path)" :separator="separator"><label
-                    v-if="!custom">{{nav.label}}</label>
+        <template v-for="(crumb,index) in crumbs" :key="index">
+            <span :class="{'separator':separator,'arrow':arrow}" :separator="separator" @click="jumpRoute(crumb)"><label
+                    v-if="!custom">{{crumb.label}}</label>
                 <template v-else>
                     <slot name="crumb"></slot>
                 </template></span>
@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import { useRouter } from 'vue-router';
 import useProps from './hooks/useProps'
+import useCrumbs from './hooks/useCrumbs'
 export default {
     name: 'ui-breadcrumb'
 }
@@ -21,11 +21,7 @@ export default {
 <script setup>
 // eslint-disable-next-line
 const props = defineProps(useProps());
-const router = useRouter()
-const goPath = (path) => {
-    if (props.replace) router.replace(path)
-    else router.push(path)
-}
+const { crumbs, jumpRoute } = useCrumbs(props)
 </script>
 
 <style lang="scss" scoped>
