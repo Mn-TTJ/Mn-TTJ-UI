@@ -1,17 +1,19 @@
 <template>
-  <div class="f">
-    <ui-affix></ui-affix>
+  <div>
+    <ui-dropdown btn onlyText :options="[{label:'hello',callBack:a},{label:'world'},{label:'ge'}]">
+      click me
+    </ui-dropdown>
   </div>
 </template>
 
 <script setup>
-
+const a = (e) => {
+  console.log(e)
+}
 </script>
 
 <style scoped>
-.f {
-  height: 5rem;
-  width: 10rem;
-  overflow: auto;
+div {
+  text-align: left;
 }
 </style>
