@@ -53,12 +53,14 @@ const header = ref(null);
 
 // 关闭弹窗
 const closedialog = () => {
-  props.handleClose(() => {
-    return !props.visible;
-  });
-  // emit("handleClose", () => {
-  //   emit("close", !props.visible);
-  // });
+  if (props.handleClose) {
+    props.handleClose(() => {
+      return !props.visible;
+    });
+  } else {
+    emit("close", !props.visible);
+  }
+
   console.log(1111);
 };
 // 拖动窗口
@@ -145,10 +147,7 @@ onBeforeUpdate(() => {
 }
 .mask {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0px;
   background-color: rgb(103, 103, 103, 0.5);
   z-index: 1;
 }
