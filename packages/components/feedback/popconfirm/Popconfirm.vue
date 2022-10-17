@@ -80,7 +80,6 @@ onMounted(() => {
   });
   window.addEventListener("resize", () => {
     confirm.value.style.left = `${box.value.offsetLeft}px`;
-    console.log(confirm.value.style.left);
   });
 });
 
