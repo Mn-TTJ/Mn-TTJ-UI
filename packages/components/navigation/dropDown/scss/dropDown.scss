@@ -1,0 +1,127 @@
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-shower {
+    padding: 0.5rem;
+    padding-right: 1.5rem;
+    display: flex;
+    min-width: 8rem;
+    align-items: center;
+    color: var(--color);
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 0.2rem;
+    user-select: none;
+    transition-duration: 0.3s;
+
+    label {
+        text-align: center;
+        flex: 1;
+        cursor: inherit;
+    }
+
+    &::after {
+        position: absolute;
+        right: 0.2rem;
+        font-family: iconfont;
+        content: '\e699';
+    }
+}
+
+.dropdown-panel {
+    position: absolute;
+    left: 50%;
+    display: none;
+    top: calc(100% + 0.1rem);
+    max-width: 150%;
+    min-width: 100%;
+    z-index: 1;
+    border-radius: 0.1rem;
+    transform: translateX(-50%);
+    animation: involution 0.3s;
+
+    ul {
+        list-style: none;
+        border-radius: 0.1rem;
+        overflow: hidden;
+
+        li {
+            padding: 0.5rem;
+            text-align: center;
+            user-select: none;
+            background-color: var(--background-color);
+            color: var(--color);
+            border-color: var(--border-color);
+
+            &:hover {
+                cursor: pointer;
+                background-color: var(--background-color-hover);
+                color: var(--color-hover);
+                border-color: var(--border-color-hover);
+            }
+        }
+    }
+}
+
+.is-shadow {
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+.is-panel {
+    display: block;
+}
+
+.is-shower {
+    border-color: var(--border-color-hover);
+    color: var(--color-hover);
+    background-color: var(--background-color-hover);
+}
+
+.is-btn:active {
+    opacity: 0.9;
+}
+
+
+.is-sm-show {
+    min-width: 6rem;
+    padding: 0.3rem;
+    padding-right: 1rem;
+    font-size: 0.9rem;
+}
+
+.is-sm-panel {
+    ul {
+        li {
+            padding: 0.3rem;
+            font-size: 0.9rem;
+        }
+    }
+}
+
+.is-lg-show {
+    min-width: 10rem;
+    padding: 0.6rem;
+    padding-right: 1.8rem;
+    font-size: 1.1rem;
+}
+
+.is-lg-panel {
+
+    ul {
+        li {
+            padding: 0.6rem;
+            font-size: 1.1rem;
+        }
+    }
+}
+
+.only-text {
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+
+    &::after {
+        content: '';
+    }
+}

@@ -19,6 +19,9 @@ module.exports = {
                 return options
             })
     },
+    configureWebpack: {
+        plugins: [require('unplugin-vue-define-options/webpack')()],
+    },
     lintOnSave: true,
 
 }

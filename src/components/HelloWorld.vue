@@ -1,17 +1,15 @@
 <template>
-  <div class="f">
-    <ui-affix></ui-affix>
+  <div>
+    <ui-drawer v-model="a" bottom altitude="30%"></ui-drawer>
+    <button @click="b">aaa</button>
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue';
 
-</script>
-
-<style scoped>
-.f {
-  height: 5rem;
-  width: 10rem;
-  overflow: auto;
+const a = ref(false)
+const b = () => {
+  a.value = true
 }
-</style>
+</script>

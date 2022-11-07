@@ -1,0 +1,58 @@
+.menu {
+    display: flex;
+    position: relative;
+    width: 100%;
+    border-bottom: 1px solid #dcdfe6;
+    background-color: var(--menu-bg-color);
+    transition-duration: 0.5s;
+}
+
+.menu-reverse {
+    flex-direction: row-reverse;
+}
+
+.menu-vertical {
+    flex-direction: column;
+    height: 100%;
+    border: none;
+    border-right: 1px solid #dcdfe6;
+}
+
+.menu-btns {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.menu-btns-reverse {
+    justify-content: flex-start;
+}
+
+.menu-btns-vertical {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.menu-btns-center {
+    align-items: center;
+}
+
+.menu-collapse {
+    width: 3rem;
+}
+
+.no-bottom {
+    border: none;
+}
+
+.menu-title {
+    padding: 0.5rem 1.5rem;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    text-align: left;
+}
+
+.menu-title-center {
+    text-align: center;
+}
