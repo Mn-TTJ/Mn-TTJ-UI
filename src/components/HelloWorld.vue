@@ -1,26 +1,15 @@
 <template>
-  <div class="e" ref="e">
-    <div class="c"></div>
-    <ui-backtop :root="e">
-      heelo</ui-backtop>
+  <div>
+    <ui-drawer v-model="a" bottom altitude="30%"></ui-drawer>
+    <button @click="b">aaa</button>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-const e = ref(null)
+import { ref } from 'vue';
+
+const a = ref(false)
+const b = () => {
+  a.value = true
+}
 </script>
-
-<style scoped>
-.e {
-  height: 30rem;
-  width: 20rem;
-  overflow: scroll;
-}
-
-.c {
-  height: 60rem;
-  width: 10rem;
-  background-color: antiquewhite;
-}
-</style>

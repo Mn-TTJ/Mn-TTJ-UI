@@ -1,0 +1,77 @@
+.menu-item {
+    position: relative;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 3rem;
+    color: var(--menu-text-color);
+    overflow: hidden;
+    cursor: pointer;
+    font-family: 'iconfont';
+    transition-duration: 0.5s;
+
+    &:hover {
+        background-color: var(--menu-hover-color);
+    }
+
+    label {
+        cursor: inherit;
+        transition-duration: 0.01s;
+    }
+
+    span {
+        width: auto;
+        height: 2rem;
+        flex-shrink: 0;
+        line-height: 2rem;
+        font-size: 1.4rem;
+    }
+}
+
+.menu-item-vertical {
+    width: 100%;
+}
+
+.menu-item-isCollapse {
+    padding: 0.5rem;
+    width: 3rem;
+
+    span {
+        width: 2rem;
+    }
+
+    label {
+        padding-left: 0.5rem;
+    }
+}
+
+.menu-item-unCollapse {
+    padding: 0.5rem;
+    width: 100%;
+
+    span {
+        width: 2rem;
+    }
+}
+
+.menu-item-center {
+    justify-content: center;
+}
+
+.menu-disabled {
+    cursor: not-allowed;
+
+    &:hover {
+        background-color: var(--menu-bg-color);
+    }
+}
+
+.menu-item-underict {
+    padding-right: 1rem;
+    width: auto;
+}
+
+.menu-item-active {
+    color: var(--menu-active-color);
+}
