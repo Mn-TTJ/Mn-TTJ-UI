@@ -8,6 +8,7 @@
       small: size === 'small',
       disabled: disabled || loading,
     }"
+    class="ui-button"
     :style="{
       backgroundColor: color,
     }"
@@ -25,7 +26,7 @@
       ></i>
     </div>
 
-    {{ word }}
+    <slot>></slot>
     <!-- 图标 -->
     <i
       v-if="icon !== undefined && loading !== true"
@@ -52,17 +53,19 @@ export default {
 const props = defineProps(useProps());
 
 // 表单
-const submitEvent = inject("submit");
-const submit = (success, error) => {
-  submitEvent()
-    .then((formDate) => success(formDate))
-    .catch((Err) => error(Err));
-};
+if (props.submit) {
+  const submitEvent = inject("submit");
+  const submit = (success, error) => {
+    submitEvent()
+      .then((formDate) => success(formDate))
+      .catch((Err) => error(Err));
+  };
+}
 </script>
 
 <style lang="scss" scoped>
 @import "../../../icon/iconfont.css";
-button {
+.ui-button {
   padding: 0px 10px;
   font-size: 16px;
   font-weight: 100;
@@ -72,9 +75,13 @@ button {
   vertical-align: middle;
   background-color: transparent;
   border: 1px solid rgb(199, 199, 199);
+  cursor: pointer;
   &:hover {
     background-color: #ddd;
   }
+}
+.ui-button + .ui-button {
+  margin-left: 12px;
 }
 
 .round {
