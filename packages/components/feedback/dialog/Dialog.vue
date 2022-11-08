@@ -16,7 +16,7 @@
         <i class="iconfont close" @click.prevent="closedialog">&#xe747;</i>
         <h4 :class="{ center: center }" ref="header">{{ title }}</h4>
         <main>
-          <slot></slot>
+          <slot>{{ text }}</slot>
         </main>
         <footer :class="{ buttonGroupCenter: center }">
           <slot name="footer"></slot>
@@ -60,19 +60,14 @@ const closedialog = () => {
   } else {
     emit("close", !props.visible);
   }
-
-  console.log(1111);
 };
 // 拖动窗口
 const draggable = computed(() => props.draggable);
 useDraggable(dialog, header, draggable);
-
 // 去除滚动条
-let a = ref(props.visible);
-
 watch(
   () => props.visible,
-  async (n) => {
+  (n) => {
     if (n && props.lockScroll) {
       document.querySelector("html").style.overflow = "hidden";
     } else {
@@ -104,7 +99,7 @@ onBeforeUpdate(() => {
   inset: 0px;
 }
 .dialog {
-  width: 35%;
+  width: 40%;
   background-color: #fff;
   z-index: 2;
   position: absolute;
@@ -139,6 +134,7 @@ onBeforeUpdate(() => {
     text-align: center;
   }
   .buttonGroupCenter {
+    text-align: center;
     float: none;
   }
 }

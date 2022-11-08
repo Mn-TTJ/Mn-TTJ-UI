@@ -24,5 +24,6 @@ export default function () {
     openDelay: Number, // 延迟打开
     closeDelay: Number, // 延迟关闭
     handleClose: Function, // 关闭前的回调
+    text:String,
   };
 }

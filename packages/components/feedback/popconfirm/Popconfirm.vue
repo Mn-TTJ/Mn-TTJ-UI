@@ -34,26 +34,18 @@ export default {
 const props = defineProps(useProps());
 
 let box = ref(null);
-let btn = ref(null);
-let target;
 let show = ref(true);
 let confirm = ref(null);
-let width = ref(window.innerWidth);
 
 const emit = defineEmits(["confirm", "cancel"]);
-onUpdated(() => {
-  console.log(window.innerWidth);
-});
 onMounted(() => {
   // 设置只显示第一个元素，且只绑定他
   for (let i = 1; i < box.value.childNodes.length - 1; i++) {
     if (box.value.childNodes[i].nodeName !== "#comment") {
       if (box.value.childNodes[i].nodeName === "#text") {
-        let firstNode = box.value.childNodes[i];
         box.value.innerHTML = box.value.childNodes[i].data;
         break;
       } else {
-        let firstNode = box.value.childNodes[i];
         box.value.innerHTML = box.value.childNodes[i].outerHTML;
         break;
       }
@@ -84,11 +76,9 @@ onMounted(() => {
 });
 
 const cancel = () => {
-  // console.log("cancel");
   emit("cancel");
 };
 const confirm12 = () => {
-  // console.log("confirm");
   emit("confirm");
 };
 // 待过渡动画执行完再设置display:none
@@ -120,6 +110,8 @@ watch(
   border-radius: 5px;
   animation: show 0.3s;
   transition: all 0.3s;
+  background-color: #fff;
+
   p {
     margin-bottom: 10px;
   }

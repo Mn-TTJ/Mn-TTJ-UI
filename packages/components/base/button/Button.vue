@@ -75,6 +75,7 @@ if (props.submit) {
   vertical-align: middle;
   background-color: transparent;
   border: 1px solid rgb(199, 199, 199);
+  cursor: pointer;
   &:hover {
     background-color: #ddd;
   }

@@ -22,7 +22,6 @@
 
 <script>
 import { onMounted, ref, defineProps } from "vue";
-// import { vLoading } from "./hooks/directive";
 import useProps from "./hooks/useProps";
 export default {
   name: "ui-loading",
@@ -31,12 +30,6 @@ export default {
 <script setup>
 // eslint-disable-next-line
 const props = defineProps(useProps());
-// let loaded = ref(true);
-// onMounted(() => {
-//   setTimeout(() => {
-//     loaded.value = !loaded.value;
-//   }, 2000);
-// });
 </script>
 
 <style scoped lang="scss">

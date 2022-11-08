@@ -1,104 +1,156 @@
 <template>
-  <div class="box">
-    <div ref="box">
-      <slot></slot>
-    </div>
-    <!-- <div class="tooltip" v-show="show">{{ content }}</div> -->
-    <div class="tooltip" ref="tooltip">
-      {{ content }}
-      <div :class="placement.split('-').join(' ')"></div>
-      <!-- <div class="top start"></div>
-      <div class="top"></div>
-      <div class="top end"></div>
-      <div class="bottom start"></div>
-      <div class="bottom"></div>
-      <div class="bottom end"></div>
-      <div class="left"></div>
-      <div class="right"></div> -->
-    </div>
+  <div class="father" @mouseover="show" @mouseout="hide" ref="father">
+    <slot></slot>
+    <transition>
+      <div
+        :class="`tooltip pos-${placement}`"
+        v-show="showTooltip"
+        ref="tooltip"
+      >
+        <p ref="p">{{ content }}</p>
+        <div :class="`triangle ${placement}`" ref="triangle"></div>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
-import { ref, onMounted, defineProps } from "vue";
 import useProps from "./hooks/useProps";
+import { defineProps, ref, onMounted } from "vue";
 export default {
   name: "ui-tooltip",
 };
 </script>
-
 <script setup>
-// eslint-disable-next-line
 const props = defineProps(useProps());
-let box = ref(null);
-let show = ref(false);
+const showTooltip = ref(false);
 let tooltip = ref(null);
+let triangle = ref(null);
+let p = ref(null);
+let father = ref(null);
+const show = () => {
+  showTooltip.value = true;
+};
+const hide = () => {
+  showTooltip.value = false;
+};
 onMounted(() => {
-  box.value.onmouseover = () => {
-    show.value = true;
-    tooltip.value.style.opacity = 1;
-  };
-  box.value.onmouseout = () => {
-    show.value = false;
-    tooltip.value.style.opacity = 0;
-  };
+  if (props.effect === "light") {
+    tooltip.value.classList.add("light");
+    setBorderColor("#fff");
+  } else {
+    tooltip.value.classList.add("dark");
+    setBorderColor("#000");
+  }
+  // 是否作为HTML内容处理
+  if (props.rawContent) {
+    // 不直接覆盖全部是因为小三角形还要存在
+    tooltip.value.removeChild(p.value);
+    tooltip.value.innerHTML += props.content;
+  }
+  // 触发方式
+  father.value.addEventListener(props.trigger, show);
 });
-// onUnmounted(() => {});
+const setBorderColor = (color) => {
+  if (props.placement === "top") {
+    triangle.value.style.borderTopColor = color;
+  } else if (props.placement === "bottom") {
+    triangle.value.style.borderBottomColor = color;
+  } else if (props.placement === "left") {
+    triangle.value.style.borderLeftColor = color;
+  } else {
+    triangle.value.style.borderRightColor = color;
+  }
+};
 </script>
 
-<style lang="scss" scoped>
-.box {
-  display: inline-block;
+<style scoped lang="scss">
+.father {
   position: relative;
+  display: inline-block;
+  color: #fff;
+
+  .tooltip {
+    position: absolute;
+    // background-color: #000;
+    padding: 7px 12px;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    box-shadow: 0px 0px 20px 5px #ddd;
+    .triangle {
+      position: absolute;
+      border: 10px solid transparent;
+    }
+    .bottom {
+      border-bottom-color: #000;
+      right: 50%;
+      transform: translateX(50%);
+      top: -20px;
+    }
+    .top {
+      border-top-color: #000;
+      right: 50%;
+      transform: translateX(50%);
+      bottom: -20px;
+    }
+    .start {
+      left: 30%;
+      transform: translateX(-50%);
+    }
+    .end {
+      right: 30%;
+    }
+    .left {
+      border-left-color: #000;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .right {
+      border-right-color: #000;
+      left: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  .pos-top {
+    top: -150%;
+    left: 50%;
+  }
+  .pos-bottom {
+    // bottom: -120%;
+    top: 150%;
+    left: 50%;
+  }
+  .pos-left {
+    // left: -100%;
+    // top: 50%;
+    transform: translateX(-100%);
+    left: -20px;
+  }
+  .pos-right {
+    // left: 150%;
+    transform: translateX(20px);
+    left: 100%;
+  }
 }
-.tooltip {
-  margin: 20px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  // transform: translate(-50%, -50%);
-  padding: 5px;
+.light {
+  background-color: #fff;
+  color: #000;
+}
+.dark {
   background-color: #000;
-  white-space: nowrap;
-  border-radius: 3px;
-  max-width: 400px;
-  transition: all 0.5s;
-  //   transform: translate(-50%, -200%);
+  color: #fff;
+}
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
   opacity: 0;
-}
-.top,
-.bottom,
-.left,
-.right {
-  position: absolute;
-  border: 5px solid transparent;
-}
-.top {
-  border-bottom-color: #000;
-  left: 50%;
-  top: -10px;
-}
-.bottom {
-  border-top-color: #000;
-  bottom: -10px;
-  left: 50%;
-}
-.left {
-  border-right-color: #000;
-  left: -10px !important;
-  top: 50%;
-  transform: translateY(-50%);
-}
-.right {
-  border-left-color: #000;
-  right: -10px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-.start {
-  left: 22.5%;
-}
-.end {
-  left: 77.5%;
 }
 </style>
