@@ -1,0 +1,20 @@
+.steps {
+    position: relative;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.steps-column {
+    flex-direction: column;
+}
+
+.simple {
+    background-color: #f5f7fa;
+    border-radius: 0.2rem;
+}

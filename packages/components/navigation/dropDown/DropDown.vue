@@ -1,15 +1,15 @@
 <template>
     <div class="dropdown">
         <div class="dropdown-shower"
-            :class="{'is-shower':isOnPanel,'is-btn':btn,'only-text':onlyText, 'is-sm-show':sm,'is-lg-show':lg}"
+            :class="{ 'is-shower': isOnPanel, 'is-btn': btn, 'only-text': onlyText, 'is-sm-show': sm, 'is-lg-show': lg }"
             :style="showerStyle" ref="shower">
             <label>
                 <slot></slot>
             </label>
         </div>
-        <div class="dropdown-panel" :class="{'is-panel':isOnPanel,'is-sm-panel':sm,'is-lg-panel':lg}" ref="panel">
-            <ul v-if="!custom" :class="{'is-shadow':shadow}" :style="panelStyle">
-                <li v-for="(option,index) in options" :key="index" @click="option.callBack(index)">{{option.label}}</li>
+        <div class="dropdown-panel" :class="{ 'is-panel': isOnPanel, 'is-sm-panel': sm, 'is-lg-panel': lg }" ref="panel">
+            <ul v-if="!custom" :class="{ 'is-shadow': shadow }" :style="panelStyle">
+                <li v-for="(option, index) in options" :key="index" @click="option.callBack(index)">{{ option.label }}</li>
             </ul>
             <template v-else>
                 <slot name="panel"></slot>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import useProps from './hooks/useProps'
+import { dropDownProps } from './props/index'
 import useOnPanel from './hooks/useOnPanel'
 import useStyle from './hooks/useStyle'
 import { ref } from 'vue';
@@ -30,7 +30,7 @@ export default {
 
 <script setup>
 // eslint-disable-next-line
-const props = defineProps(useProps());
+const props = defineProps(dropDownProps);
 const shower = ref(null)
 const panel = ref(null)
 const isOnPanel = useOnPanel(props, shower, panel)

@@ -1,11 +1,11 @@
 <template>
-    <div type="tabPanel" ref="panel" :label="label" v-show="active==id">
+    <div type="tabPanel" ref="panel" :label="label" v-show="active == id">
         <slot></slot>
     </div>
 </template>
 
 <script>
-import usePanelProps from './hooks/usePanelProps'
+import { panelProps } from './props/index'
 import { tabsKey } from './symbol/index'
 import { isDOM } from '../../../utils/utils'
 import { inject, onMounted, ref } from 'vue';
@@ -16,7 +16,7 @@ export default {
 
 <script setup>
 // eslint-disable-next-line
-const props = defineProps(usePanelProps());
+const props = defineProps(panelProps);
 const panel = ref(null)
 const active = inject(tabsKey)
 const id = ref(-1)
