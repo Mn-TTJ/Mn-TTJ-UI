@@ -2,7 +2,10 @@ export default function () {
     let props = {
         name: String,
         disabled: String,
-        text: String,
+        text: {
+            type: String,
+            default: 'upload'
+        },
         btn: Boolean,
         accept: String,
         cover: Boolean,
