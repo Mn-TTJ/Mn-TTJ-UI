@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import useProps from './hooks/useProps'
+import { affixProps } from './props/index'
 export default {
     name: 'ui-affix'
 }
@@ -13,7 +13,7 @@ export default {
 
 <script setup>
 // eslint-disable-next-line
-const props = defineProps(useProps());
+const props = defineProps(affixProps);
 </script>
 
 <style lang="scss" scoped>

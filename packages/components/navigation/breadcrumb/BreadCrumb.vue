@@ -1,8 +1,8 @@
 <template>
     <div class="bread-crumb">
-        <template v-for="(crumb,index) in crumbs" :key="index">
-            <span :class="{'separator':separator,'arrow':arrow}" :separator="separator" @click="jumpRoute(crumb)"><label
-                    v-if="!custom">{{crumb.label}}</label>
+        <template v-for="(crumb, index) in crumbs" :key="index">
+            <span :class="{ 'separator': separator, 'arrow': arrow }" :separator="separator" @click="jumpRoute(crumb)"><label
+                    v-if="!custom">{{ crumb.label }}</label>
                 <template v-else>
                     <slot name="crumb"></slot>
                 </template></span>
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import useProps from './hooks/useProps'
+import { crumbsProps } from './props/index'
 import useCrumbs from './hooks/useCrumbs'
 export default {
     name: 'ui-breadcrumb'
@@ -20,7 +20,7 @@ export default {
 
 <script setup>
 // eslint-disable-next-line
-const props = defineProps(useProps());
+const props = defineProps(crumbsProps);
 const { crumbs, jumpRoute } = useCrumbs(props)
 </script>
 

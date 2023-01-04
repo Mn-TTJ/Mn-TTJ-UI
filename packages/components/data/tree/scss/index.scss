@@ -1,0 +1,116 @@
+.leaf {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.leaf-node {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    color: #606266;
+    cursor: pointer;
+
+    span {
+        margin: 0.2rem 0.2rem;
+        display: inline-block;
+        height: 1rem;
+        width: 1rem;
+        font-family: iconfont;
+        color: #a8abb2;
+        transform: scale(0.6) rotateZ(-90deg);
+        transition-duration: 0.3s;
+        opacity: 0;
+    }
+
+    label {
+        margin: 0.2rem 0rem;
+    }
+
+    &:hover {
+        background-color: #f5f7fa;
+    }
+}
+
+.leaf-expend-btn {
+    span {
+        opacity: 1;
+    }
+}
+
+.leaf-expend {
+    background-color: #f5f7fa;
+
+    span {
+        transform: scale(0.6) rotateZ(0deg);
+    }
+}
+
+.leaf-loading {
+    color: #409eff;
+    margin: 0.2rem;
+    height: 1rem;
+    width: 1rem;
+    animation: loading 1s infinite;
+    font-family: iconfont;
+}
+
+.leaf-disabeld {
+    cursor: not-allowed;
+}
+
+.leaf-select-box {
+    margin: 0.2rem;
+    margin-left: 0rem;
+    height: 1rem;
+    width: 1rem;
+    border: 1px solid #409eff;
+    border-radius: 0.2rem;
+    cursor: pointer;
+}
+
+.leaf-select-disabled {
+    border-color: #a8abb2;
+    cursor: not-allowed;
+}
+
+.leaf-all,
+.leaf-part {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #409eff;
+    font-family: iconfont;
+
+    &::after {
+        color: white;
+        transform: scale(0.6);
+    }
+}
+
+.leaf-select-bg-disabled {
+    background-color: #a8abb2;
+}
+
+.leaf-all::after {
+    content: '\ec9e';
+}
+
+.leaf-part::after {
+    content: '\e60a';
+}
+
+.leaf-branch {
+    padding-left: 1.4rem;
+    width: 100%;
+}
+
+@keyframes loading {
+    0% {
+        transform: rotateZ(0deg);
+    }
+
+    100% {
+        transform: rotateZ(360deg);
+    }
+}

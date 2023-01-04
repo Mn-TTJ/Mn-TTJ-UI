@@ -1,0 +1,136 @@
+.ui-tag,
+.ui-tag-check {
+    display: inline-block;
+    position: relative;
+    color: var(--color);
+    overflow: hidden;
+    border-radius: 0.2rem;
+    background-color: white;
+}
+
+.ui-tag {
+
+    &::before,
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0rem;
+        left: 0rem;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        box-sizing: inherit;
+        border-radius: inherit;
+    }
+
+    &::before {
+        background-color: var(--color);
+        opacity: 0.1;
+    }
+
+    &::after {
+        border: 1px solid var(--color);
+        opacity: 0.2;
+    }
+}
+
+label {
+    margin: 0.3rem 0.6rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+button {
+    margin-left: 0.5rem;
+    border: none;
+    font-family: iconfont;
+    border-radius: 1rem;
+    background-color: rgba($color: #000000, $alpha: 0);
+    color: var(--color);
+
+    &:hover {
+        background-color: var(--color);
+        color: white;
+    }
+}
+
+.xl {
+    label {
+        margin: 0.5rem 1rem;
+    }
+}
+
+.sm {
+    label {
+        margin: 0.1rem 0.4rem;
+    }
+}
+
+.round {
+    border-radius: 50rem;
+}
+
+.plain {
+    &::before {
+        opacity: 0;
+    }
+
+    &::after {
+        opacity: 0.5;
+    }
+}
+
+.dark {
+    color: white;
+
+    &::before,
+    &::after {
+        opacity: 1;
+    }
+
+    button {
+        color: white;
+
+        &:hover {
+            color: var(--color);
+            background-color: rgba($color: white, $alpha: 0.8);
+        }
+    }
+}
+
+.ui-tag-check {
+    color: #909399;
+
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0rem;
+        left: 0rem;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        box-sizing: inherit;
+        border-radius: inherit;
+        background-color: #d0d0da;
+        opacity: 0.2;
+        transition-duration: 0.3s;
+    }
+
+    &:hover {
+        &::before {
+            opacity: 0.35;
+        }
+    }
+}
+
+.ui-tag-select {
+    color: var(--color);
+
+    &::before {
+        background-color: var(--color);
+    }
+}

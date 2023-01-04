@@ -2,11 +2,13 @@ import Base from "./components/base/index";
 import Form from "./components/form/index"
 import Navigation from "./components/navigation/index";
 import Feedback from './components/feedback/index';
+import Data from './components/data/index'
 const components = [
     ...Base.components,
     ...Form.components,
     ...Navigation.components,
     ...Feedback.components,
+    ...Data.components
 ]
 const install = function (Vue) {
     components.forEach(component => {

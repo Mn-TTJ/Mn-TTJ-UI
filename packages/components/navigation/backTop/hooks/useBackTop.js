@@ -1,5 +1,5 @@
 export default function (props) {
-    const goTop = () => {
+    const backTop = () => {
         const root = props.root
         if (typeof window.getComputedStyle(root).scrollBehavior === 'undefined') {
             const scrollTop = root.scrollTop
@@ -36,5 +36,5 @@ export default function (props) {
         }
     }
 
-    return goTop
+    return backTop
 }
