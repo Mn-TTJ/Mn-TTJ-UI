@@ -1,20 +1,26 @@
 <template>
   <div class="a">
-    <ui-table :title="['aa', 'bb', 'cc']" :data="data" :border="border" left>
+    <ui-table :title="['aa', 'bb', 'cc']" :data="data" left expand border>
       <ui-table-column prop="aa" label="AA">
         <template #title="item">
           <p>{{ item.label + '?' }}</p>
         </template>
       </ui-table-column>
-      <ui-table-column prop="bb" label="BB"></ui-table-column>
-      <ui-table-column prop="cc" label="CC" width='100%'></ui-table-column>
+      <template #left>
+        <ui-table-column prop="bb" label="BB">
+          <div class="cc">ji</div>
+        </ui-table-column>
+      </template>
+      <ui-table-column prop="cc" label="CC"></ui-table-column>
+      <template #expand>
+        hello
+      </template>
     </ui-table>
   </div>
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue';
-const border = ref(true)
+import { reactive } from 'vue';
 const data = reactive([
   {
     aa: {

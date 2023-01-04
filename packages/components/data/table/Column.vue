@@ -1,5 +1,6 @@
 <template>
-    <div :class="o" :style="{ 'width': width }">
+    <div :class="o" :style="{ 'max-width': width, 'min-width': width }" @mouseenter="hover.hoverEvent"
+        @mouseleave="hover.unHoverEvent">
         <slot name="title" v-if="title" :label="label">
             <h4>{{ label }}</h4>
         </slot>
@@ -20,7 +21,7 @@ export default {
 <script setup>
 // eslint-disable-next-line
 const props = defineProps(columnProps);
-const { data, title, o } = useColumn(props)
+const { data, title, o, hover } = useColumn(props)
 </script>
 
 <style lang="scss" scoped>

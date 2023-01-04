@@ -1,0 +1,41 @@
+.table-col {
+    padding: 0.5rem 0.2rem;
+    flex: 1;
+    height: 100%;
+    min-width: 5rem;
+    border-bottom: 1px solid #ebeef5;
+    background-color: white;
+    transition-duration: 0.3s;
+}
+
+h4 {
+    color: #909399;
+}
+
+p {
+    color: #606266;
+}
+
+.table-col-border:not(:nth-of-type(1)) {
+    border-left: 1px solid #ebeef5;
+}
+
+.table-col-last-border {
+    border-bottom: none;
+}
+
+.table-col-stripe {
+    background-color: #fafafa;
+}
+
+.table-col-hover {
+    background-color: #f5f7fa;
+}
+
+.table-col-left {
+    text-align: left;
+}
+
+.table-col-right {
+    text-align: right;
+}

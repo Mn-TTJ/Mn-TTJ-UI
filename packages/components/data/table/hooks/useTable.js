@@ -1,4 +1,4 @@
-import { computed, provide, reactive } from "vue"
+import { computed, provide, reactive, useSlots } from "vue"
 import { injectKey } from "../symbol"
 
 export default function (props) {
@@ -6,6 +6,9 @@ export default function (props) {
         'table': true,
         'table-border': computed(() => props.border)
     })
+
+    const slot = useSlots()
+
     provide(injectKey, props)
-    return { o }
+    return { o, slot }
 }

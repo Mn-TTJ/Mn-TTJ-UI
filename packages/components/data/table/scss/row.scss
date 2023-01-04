@@ -1,0 +1,31 @@
+.table-row {
+    display: flex;
+}
+
+.table-row-fixed {
+    display: flex;
+    width: calc(100% - 0.1rem);
+}
+
+.table-row-left {
+    position: sticky;
+    display: flex;
+    left: 0rem;
+    border-right: 1px solid #ebeef5;
+}
+
+.table-row-right {
+    position: sticky;
+    display: flex;
+    right: 0rem;
+    border-left: 1px solid #ebeef5;
+}
+
+.table-expand {
+    border-bottom: 1px solid #ebeef5;
+}
+
+.table-expand-border:nth-last-of-type(1) {
+    border-bottom: none;
+    border-top: 1px solid #ebeef5;
+}

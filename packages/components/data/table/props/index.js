@@ -7,7 +7,8 @@ export const tableProps = {
     left: Boolean,
     right: Boolean,
     stripe: Boolean,
-    height: String
+    height: String,
+    expand: Boolean
 }
 
 export const rowProps = {
@@ -16,7 +17,8 @@ export const rowProps = {
         default: {}
     },
     title: Boolean,
-    stripe: Boolean
+    stripe: Boolean,
+    last: Boolean
 }
 
 export const columnProps = {
