@@ -1,91 +1,31 @@
 <template>
   <div class="a">
-    <ui-table :title="['aa', 'bb', 'cc']" :data="data" left expand border>
-      <ui-table-column prop="aa" label="AA">
-        <template #title="item">
-          <p>{{ item.label + '?' }}</p>
-        </template>
-      </ui-table-column>
-      <template #left>
-        <ui-table-column prop="bb" label="BB">
-          <div class="cc">ji</div>
-        </ui-table-column>
-      </template>
-      <ui-table-column prop="cc" label="CC"></ui-table-column>
-      <template #expand>
-        hello
-      </template>
-    </ui-table>
+    <ui-row justify="center">
+      <ui-col :colCount="data.colCount1">
+        <div>hello</div>
+      </ui-col>
+      <ui-col :colCount="data.colCount2">
+        <div>hello</div>
+      </ui-col>
+    </ui-row>
+    <button @click="a">hello</button>
+    <ui-radio :labels="['a', 'b', 'c']" :values="[1, 2]" group="ad" v-model="c"></ui-radio>
   </div>
 </template>
 
 <script setup>
-import { reactive } from 'vue';
-const data = reactive([
-  {
-    aa: {
-      label: 'aa',
-      state: 1,
-    },
-    bb: {
-      label: 'bb'
-    },
-    cc: {
-      label: 'cc'
-    }
-  },
-  {
-    aa: {
-      label: 'aa'
-    },
-    bb: {
-      label: 'bb',
-      state: 2
-    },
-    cc: {
-      label: 'cc',
-      state: 1
-    },
-    state: 2
-  },
-  {
-    aa: {
-      label: 'aa',
-      state: 1
-    },
-    bb: {
-      label: 'bb',
-      state: 1
-    },
-    cc: {
-      label: '艹'
-    },
-    state: 1
-  },
-  {
-    aa: {
-      label: 'aa'
-    },
-    bb: {
-      label: 'bb'
-    },
-    cc: {
-      label: '艹'
-    }
-  },
-  {
-    aa: {
-      label: 'aa'
-    },
-    bb: {
-      label: 'bb',
-      state: 2
-    },
-    cc: {
-      label: '艹'
-    }
-  }
-])
+import { reactive, ref, watch } from 'vue';
+const data = reactive({
+  colCount1: 5,
+  colCount2: 5
+})
+const a = () => {
+  data.colCount1++
+}
+const c = ref('2')
+watch(c, () => {
+  console.log(c.value)
+})
 </script>
 
 <style scoped>

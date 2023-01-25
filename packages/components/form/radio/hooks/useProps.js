@@ -2,7 +2,11 @@ export default function () {
     let props = {
         name: String,
         labels: Array,
-        group: String,
+        values: Array,
+        group: {
+            required: true,
+            type: String
+        },
         modelValue: String | Number,
         circular: Boolean,
         tick: Boolean,

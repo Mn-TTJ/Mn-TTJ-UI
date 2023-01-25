@@ -1,21 +1,26 @@
 <template>
-  <div :style="{ justifyContent: justify }" class="row"><slot></slot></div>
+    <div class="ui-row" :style="{ justifyContent: justify, alignItems: align }">
+        <slot></slot>
+    </div>
 </template>
+
 <script>
-import { defineProps, provide } from "vue";
-import useProps from "./hooks/useProps";
+import Props from './props/index'
+import { defineProps } from 'vue';
 export default {
-  name: "ui-row",
-};
+    name: 'ui-row'
+}
 </script>
+
 <script setup>
 // eslint-disable-next-line
-const props = defineProps(useProps());
-provide("gutter", props.gutter); // 将列间距传给col组件
+const props = defineProps(Props)
 </script>
 
 <style lang="scss" scoped>
-.row {
-  display: flex;
+@import '../../../css/main.css';
+
+.ui-row {
+    display: flex;
 }
 </style>

@@ -1,19 +1,22 @@
 <template>
     <div v-if="!custom">
-        <span :class="{'selected':selected==index,'btn':btn,'selected-full':full&&selected==index,'disabled':disabled}"
-            :style="ustyle" v-for="(label,index) in labels" :key="index" @click="selecteRadio(index)">
-            <input type="radio" :id="index+group" :name="group" :value="label" v-model="mValue" :disabled="disabled">
-            <label :for="index+group" class="square" v-if="!btn"
-                :class="{'circular':circular,'noBorder':noBorder,'tick':tick}"></label>
-            <label :for="index+group" class="text">{{label}}</label><br>
+        <span
+            :class="{ 'selected': selected == index, 'btn': btn, 'selected-full': full && selected == index, 'disabled': disabled }"
+            :style="ustyle" v-for="(label, index) in labels" :key="index" @click="selecteRadio(index)">
+            <input type="radio" :id="index + group" :name="group"
+                :value="values && values.length > index ? values[index] : label" v-model="mValue" :disabled="disabled">
+            <label :for="index + group" class="square" v-if="!btn"
+                :class="{ 'circular': circular, 'noBorder': noBorder, 'tick': tick }"></label>
+            <label :for="index + group" class="text">{{ label }}</label><br>
         </span>
     </div>
     <!-- 自定义模式 -->
     <div v-if="custom">
-        <span :class="{'disabled':disabled}" v-for="(label,index) in labels" :key="index" @click="selecteRadio(index)">
-            <input type="radio" :id="index+group" :name="group" :value="label" v-model="mValue" :disabled="disabled">
-            <label :for="index+group">
-                <slot name="btn" :selected="selected==index" :label="label"></slot>
+        <span :class="{ 'disabled': disabled }" v-for="(label, index) in labels" :key="index"
+            @click="selecteRadio(index)">
+            <input type="radio" :id="index + group" :name="group" :value="label" v-model="mValue" :disabled="disabled">
+            <label :for="index + group">
+                <slot name="btn" :selected="selected == index" :label="label"></slot>
             </label>
         </span>
     </div>
@@ -43,8 +46,13 @@ const selecteRadio = (index) => {
     selected.value = index
 }
 onMounted(() => {
-    for (let index in props.labels) {
-        if (mValue.value == props.labels[index]) selected.value = index
+    if (props.values) {
+        const index = props.values.findIndex((x) => mValue.value === x)
+        if (index != -1) selected.value = index
+    }
+    if (selected.value == -1) {
+        const index = props.labels.findIndex((x) => mValue.value === x)
+        if (index != -1) selected.value = index
     }
 })
 </script>
