@@ -1,10 +1,6 @@
 .DS_Store
 node_modules
-packages
-public
-src
-babel.config.js
-vue.config.js
+/dist
 
 
 # local env files
@@ -25,3 +21,4 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
