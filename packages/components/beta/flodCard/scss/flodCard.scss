@@ -1,0 +1,62 @@
+.flod-card {
+    position: relative;
+    border: 1px solid #EBEEF5;
+    border-radius: var(--radius);
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+    overflow: hidden;
+
+    header {
+        display: flex;
+        padding: 0.5rem;
+        border-bottom: 1px solid #EBEEF5;
+        background-color: var(--h-color);
+        color: var(--t-color);
+    }
+
+    section {
+        background-color: var(--b-color);
+    }
+}
+
+p {
+    flex: 1;
+    line-height: 1.4rem;
+    text-align: center;
+}
+
+button {
+    width: 1.4rem;
+    height: 1.4rem;
+    border: none;
+    font-family: iconfont;
+    background-color: transparent
+}
+
+.flod-btn {
+    transform: rotateZ(90deg);
+}
+
+.flod-left {
+
+    p {
+        text-align: left;
+    }
+
+}
+
+.flod-shadow-none {
+    box-shadow: none;
+}
+
+.flod-shadow-hover {
+    box-shadow: none;
+    transition-duration: 0.5s;
+
+    &:hover {
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+    }
+}
+
+.flod-panel {
+    max-height: 0rem;
+}

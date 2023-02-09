@@ -1,0 +1,71 @@
+.counter {
+    display: flex;
+    width: 8.6rem;
+    border: 1px solid #dcdfe6;
+    border-radius: 0.2rem;
+    overflow: hidden;
+    background-color: white;
+}
+
+input {
+    width: 5rem;
+    height: 1.8rem;
+    outline: none;
+    border: none;
+    text-align: center;
+}
+
+button {
+    width: 1.8rem;
+    height: 1.8rem;
+    border: none;
+    background-color: #f4f4f5;
+    color: #409eff;
+    font-family: iconfont;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:active {
+        opacity: 0.6;
+    }
+}
+
+.sm {
+    width: 7.2rem;
+
+    input {
+        width: 4rem;
+        height: 1.6rem;
+    }
+
+    button {
+        width: 1.6rem;
+        height: 1.6rem;
+    }
+}
+
+.lg {
+    width: 10rem;
+
+    input {
+        width: 6rem;
+        height: 2rem;
+    }
+
+    button {
+        width: 2rem;
+        height: 2rem;
+    }
+}
+
+.disabled {
+
+
+    input,
+    button {
+        color: #9a9da6;
+        cursor: not-allowed;
+    }
+}

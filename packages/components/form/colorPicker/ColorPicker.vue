@@ -1,8 +1,8 @@
 <template>
     <div class="color-contianer">
-        <label v-if="show" :style="{'color':mValue,'margin':'0rem 0.2rem'}">{{mValue}}</label>
+        <label v-if="show" :style="{ 'color': mValue, 'margin': '0rem 0.2rem' }">{{ mValue }}</label>
         <span class="color-picker">
-            <span class="color-show" :class="{'disabled':disabled}" :style="{'background-color':mValue}"
+            <span class="color-show" :class="{ 'disabled': disabled }" :style="{ 'background-color': mValue }"
                 @click="getColor"></span>
             <input type="color" v-model="mValue" ref="picker" />
         </span>
@@ -50,6 +50,7 @@ watch(mValue, () => {
 .color-contianer {
     display: flex;
     align-items: center;
+    max-width: 9rem;
 }
 
 .color-picker {
@@ -57,6 +58,8 @@ watch(mValue, () => {
     display: inline-block;
     width: 4rem;
     height: 1.5rem;
+    border: 1px solid #EBEEF5;
+    overflow: hidden;
 }
 
 input {

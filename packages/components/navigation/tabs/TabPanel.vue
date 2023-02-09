@@ -8,7 +8,7 @@
 import { panelProps } from './props/index'
 import { tabsKey } from './symbol/index'
 import { isDOM } from '../../../utils/utils'
-import { inject, onMounted, ref } from 'vue';
+import { inject, onBeforeUpdate, ref } from 'vue';
 export default {
     name: 'ui-tab-panel'
 }
@@ -31,7 +31,7 @@ const getIndex = () => {
     }
 }
 
-onMounted(() => {
+onBeforeUpdate(() => {
     id.value = getIndex()
 })
 </script>

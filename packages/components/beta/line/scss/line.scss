@@ -1,0 +1,38 @@
+.line-r {
+    margin: var(--space) 0rem;
+    height: var(--thick);
+    width: var(--len);
+    background-color: var(--color);
+}
+
+.line-r-dashed {
+    background: linear-gradient(to left,
+            transparent 0%,
+            transparent 50%,
+            var(--color) 50%,
+            var(--color) 100%);
+    background-size: 10px 1px;
+    background-repeat: repeat-x;
+}
+
+.line-c {
+    align-self: stretch;
+    margin: 0rem var(--space);
+    width: var(--thick);
+    background-color: var(--color);
+}
+
+.line-c-dashed {
+    background: linear-gradient(to bottom,
+            transparent 0%,
+            transparent 50%,
+            var(--color) 50%,
+            var(--color) 100%);
+    background-size: 1px 10px;
+    background-repeat: repeat-y;
+}
+
+.len {
+    align-self: auto;
+    height: var(--len);
+}

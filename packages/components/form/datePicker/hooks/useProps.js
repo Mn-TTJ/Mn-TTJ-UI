@@ -3,7 +3,8 @@ export default function () {
         name: String,
         modelValue: String,
         week: Boolean,
-        disabled: Boolean
+        disabled: Boolean,
+        noForm: Boolean
     }
     return props
 }

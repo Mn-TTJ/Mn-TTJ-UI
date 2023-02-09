@@ -1,9 +1,10 @@
 <template>
     <div class="textarea-base">
-        <div class="text-input" :class="{'disabled':disabled,'resizable':resizable,'lessInput':lessInput}"
-            :contenteditable="!disabled" @input="inputEvent" ref="tArea" :placeholder="parser" :style="ustyle"></div>
+        <div class="text-input" :class="{ 'disabled': disabled, 'resizable': resizable, 'lessInput': lessInput }"
+            :contenteditable="!disabled" @input="inputEvent" ref="tArea" :placeholder="parser" :style="ustyle"
+            @keydown.enter.prevent></div>
         <textarea class="hidden-input" v-model="mValue"></textarea>
-        <p v-if="min" :class="{'input-p-hidden':!lessInput}">*输入字符不足{{min}}个*</p>
+        <p v-if="min" :class="{ 'input-p-hidden': !lessInput }">*输入字符不足{{ min }}个*</p>
     </div>
 </template>
 
@@ -23,7 +24,7 @@ const props = defineProps(useProps());
 const emits = defineEmits(['update:modelValue'])
 const mValue = computed({
     get: () => props.modelValue,
-    set: (val) => emits('update:modelValue', val)
+    set: (val) => emits('update:modelValue')
 })
 useForm(props.name, mValue, false)
 const lessInput = useMin(props)
@@ -35,6 +36,7 @@ const inputEvent = () => {
         tArea.value.innerHTML = text
         tArea.value.blur()
     }
+    tArea.value.innerHTML = text
     mValue.value = text
 }
 onMounted(() => {

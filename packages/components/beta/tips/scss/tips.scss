@@ -1,0 +1,63 @@
+.tips {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    padding: 0.2rem 0.4rem;
+    display: inline-flex;
+    width: var(--width);
+    border-radius: 0.2rem;
+    background-color: white;
+    transform: translateX(-50%);
+    overflow: hidden;
+    align-items: center;
+    z-index: 1000;
+
+    &::before,
+    &::after {
+        display: inline-block;
+        content: '';
+        position: absolute;
+        top: 0rem;
+        left: 0rem;
+    }
+
+    &::before {
+        width: calc(100% - 2px);
+        height: calc(100% - 2px);
+        opacity: 0.3;
+        border: 1px solid var(--color);
+        border-radius: 0.2rem;
+        z-index: -1;
+    }
+
+    &::after {
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.2;
+        background-color: var(--color);
+    }
+}
+
+p {
+    flex: 1;
+    font-size: 0.9rem;
+    color: var(--color);
+}
+
+button {
+    background-color: transparent;
+    font-family: iconfont;
+    border: none;
+    color: var(--color);
+}
+
+.tips-enter-active,
+.tips-leave-active {
+    transition-duration: 0.5s;
+}
+
+.tips-enter-from,
+.tips-leave-to {
+    transform: translateY(calc(-100% - 1.5rem)) translateX(-50%);
+}

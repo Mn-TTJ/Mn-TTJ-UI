@@ -1,0 +1,21 @@
+.text {
+    width: 100%;
+    font-size: var(--fontSize);
+    font-weight: var(--fontWeight);
+    color: var(--color);
+    text-align: var(--align);
+    overflow: hidden;
+}
+
+.pre {
+    text-overflow: var(--hidden);
+}
+
+.p {
+    width: 35px;
+    display: -webkit-box;
+    text-overflow: var(--hidden);
+    -webkit-line-clamp: var(--row);
+    -webkit-box-orient: vertical;
+    word-break: var(--break);
+}

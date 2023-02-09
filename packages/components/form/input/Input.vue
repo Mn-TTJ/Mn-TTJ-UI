@@ -4,16 +4,16 @@
             <span class="pre-span" v-if="pre">
                 <slot name="pre"></slot>
             </span>
-            <div class="input-box" :class="{'clearable':clearable}" @click="clearInput">
-                <input :class="{'lessInput':lessInput,'pre-border':pre,'behind-border':behind,'disabled':disabled}"
+            <div class="input-box" :class="{ 'clearable': clearable }" @click="clearInput">
+                <input :class="{ 'lessInput': lessInput, 'pre-border': pre, 'behind-border': behind, 'disabled': disabled }"
                     :style="ustyle" v-model="mValue" :disabled="disabled" :placeholder="parser" :maxlength="max"
-                    :type="password?'password':'text'" @focus="$emit('focus')" @blur="$emit('blur')" ref="input" />
+                    :type="password ? 'password' : 'text'" @focus="$emit('focus')" @blur="$emit('blur')" ref="input" />
             </div>
             <span class="behind-span" v-if="behind">
                 <slot name="behind"></slot>
             </span>
         </div>
-        <p v-if="min" :class="{'input-p-hidden':!lessInput}">*输入字符不足{{min}}个*</p>
+        <p v-if="min" :class="{ 'input-p-hidden': !lessInput }">*输入字符不足{{ min }}个*</p>
     </div>
 </template>
     
@@ -49,7 +49,7 @@ const clearInput = (event) => {
 
 .input-base {
     position: relative;
-    display: inline-block;
+    display: block;
     width: 100%;
     max-width: 40rem;
 }

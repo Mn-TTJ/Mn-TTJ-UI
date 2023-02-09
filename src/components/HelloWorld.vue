@@ -1,35 +1,34 @@
 <template>
   <div class="a">
-    <ui-row justify="center">
-      <ui-col :colCount="data.colCount1">
-        <div>hello</div>
-      </ui-col>
-      <ui-col :colCount="data.colCount2">
-        <div>hello</div>
-      </ui-col>
-    </ui-row>
-    <button @click="a">hello</button>
-    <ui-radio :labels="['a', 'b', 'c']" :values="[1, 2]" group="ad" v-model="c"></ui-radio>
+    <ui-tips ref="d"></ui-tips>
+  </div>
+  <button @click="e">hello</button>
+  <div class="b">
+    <div class="c"></div>
+    <ui-line color="red" dashed vertical></ui-line>
   </div>
 </template>
 
 <script setup>
-import { reactive, ref, watch } from 'vue';
-const data = reactive({
-  colCount1: 5,
-  colCount2: 5
-})
-const a = () => {
-  data.colCount1++
+import { ref } from 'vue';
+
+const d = ref(null)
+const ee = `<p>hello</p>`
+const e = () => {
+  console.log(ee.value)
 }
-const c = ref('2')
-watch(c, () => {
-  console.log(c.value)
-})
 </script>
 
 <style scoped>
 .a {
   padding: 1rem;
+}
+
+.b {
+  display: flex;
+}
+
+.c {
+  height: 80px;
 }
 </style>

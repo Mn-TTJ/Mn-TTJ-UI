@@ -1,0 +1,58 @@
+.dialog {
+    position: fixed;
+    top: 0rem;
+    left: 0rem;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba($color: #000000, $alpha: .4);
+    z-index: 1000;
+}
+
+main {
+    position: absolute;
+    padding: 0.5rem;
+    top: 50%;
+    left: 50%;
+    background-color: var(--color);
+    width: var(--width);
+    height: var(--height);
+    border-radius: var(--radius);
+    transform: translate(-50%, -50%);
+}
+
+header {
+    padding-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+p {
+    flex: 1;
+}
+
+button {
+    font-family: iconfont;
+    font-size: 1.3rem;
+    border: none;
+    color: red;
+    border-radius: 0.2rem;
+}
+
+.dialog-panel-only {
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+
+    main {
+        border: 1px solid #EBEEF5;
+    }
+}
+
+.dialog-shadow {
+    main {
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+    }
+}
