@@ -31,7 +31,7 @@ export default function (props, shower, panel) {
         isHover = false
         setTimeout(() => {
             if (!isHover) isOnPanel.value = false
-        }, 0.5)
+        }, 200)
     }
 
     onMounted(() => {

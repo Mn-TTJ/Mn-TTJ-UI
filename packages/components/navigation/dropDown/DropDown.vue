@@ -4,12 +4,14 @@
             :class="{ 'is-shower': isOnPanel, 'is-btn': btn, 'only-text': onlyText, 'is-sm-show': sm, 'is-lg-show': lg }"
             :style="showerStyle" ref="shower">
             <label>
-                <slot></slot>
+                <slot>{{ text }}</slot>
             </label>
         </div>
-        <div class="dropdown-panel" :class="{ 'is-panel': isOnPanel, 'is-sm-panel': sm, 'is-lg-panel': lg }" ref="panel">
+        <div class="dropdown-panel" :class="{ 'is-panel': isOnPanel, 'is-sm-panel': sm, 'is-lg-panel': lg }"
+            ref="panel">
             <ul v-if="!custom" :class="{ 'is-shadow': shadow }" :style="panelStyle">
-                <li v-for="(option, index) in options" :key="index" @click="option.callBack(index)">{{ option.label }}</li>
+                <li v-for="(option, index) in options" :key="index" @click="option.callBack(index)">{{ option.label }}
+                </li>
             </ul>
             <template v-else>
                 <slot name="panel"></slot>

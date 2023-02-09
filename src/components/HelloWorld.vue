@@ -7,10 +7,17 @@
     <div class="c"></div>
     <ui-line color="red" dashed vertical></ui-line>
   </div>
+  <ui-textarea v-model="ee"></ui-textarea>
+  <div class="e">
+    <ui-counter :disabled="false"></ui-counter>
+  </div>
+  <ui-dropdown :options="options" hasBorder text="hello"></ui-dropdown>
 </template>
 
 <script setup>
 import { ref } from 'vue';
+const a = () => { console.log(0) }
+const options = [{ label: 'hello', callBack: a }, { label: 'world' }, { label: 'ge' }]
 
 const d = ref(null)
 const ee = `<p>hello</p>`
@@ -30,5 +37,9 @@ const e = () => {
 
 .c {
   height: 80px;
+}
+
+.e {
+  cursor: not-allowed;
 }
 </style>

@@ -1,5 +1,6 @@
 export default function () {
     let props = {
+        label: String,
         round: Boolean, //是否是药丸形状
         disabled: Boolean,//是否禁用
         circle: Boolean,//是否是圆形
@@ -8,7 +9,7 @@ export default function () {
         text: Boolean,//是否有边框(文字按钮没有边框)
         icon: String,//图标
         loading: Boolean,//是否正在加载
-        submit:String,
+        submit: String,
     }
     return props
 }

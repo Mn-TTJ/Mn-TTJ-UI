@@ -1,4 +1,5 @@
 export const dropDownProps = {
+    text: String,
     click: Boolean,
     onlyText: Boolean,
     hasBorder: Boolean,

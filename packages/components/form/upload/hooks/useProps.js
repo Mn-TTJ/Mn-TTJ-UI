@@ -1,7 +1,7 @@
 export default function () {
     let props = {
         name: String,
-        disabled: String,
+        disabled: Boolean,
         text: {
             type: String,
             default: 'upload'

@@ -31,12 +31,14 @@ const lessInput = useMin(props)
 const tArea = ref(null)
 const inputEvent = () => {
     let text = tArea.value.innerHTML
+    const cache = text
     if (props.max && text.length > props.max) {
         text = text.substr(0, props.max)
         tArea.value.innerHTML = text
         tArea.value.blur()
     }
-    tArea.value.innerHTML = text
+    if (text != cache) tArea.value.innerHTML = text
+    console.log(cache)
     mValue.value = text
 }
 onMounted(() => {
