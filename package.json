@@ -1,6 +1,6 @@
 {
   "name": "mn-ttj-ui",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "private": false,
   "main": "dist/mn-ttj-ui.umd.js",
   "author": "mn-ttj",
